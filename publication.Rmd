@@ -1,0 +1,154 @@
+---
+title: "About Writing Dynamic Documents with R"
+author:
+- Author Name^1^
+- ^1^Department of Geography, University of Zurich, Winterthurerstrasse 190, Zurich
+- name@geo.uzh.ch
+bibliography: bibliography.bib
+output:
+  pdf_document:
+    keep_tex: yes
+  html_document: default
+  word_document:
+    fig_caption: yes
+    fig_width: 4
+    reference_docx: template.docx
+csl: springer-basic.csl
+abstract: "This is the abstract of the template document used to show how to write
+  \npublications in R with R Markdown and the help of some packages.  Based on a \nconcrete
+  usecase this document exemplifies some of the caveats that may occur\nwhen writing
+  such document and publish it online on a GIT repository. It also\npresents typical
+  usecases in MarkDown usage and presents some tricks.\n     \n"
+---
+
+```{r setup,comment=FALSE, message = FALSE, echo=FALSE,warning=FALSE}
+rm(list=ls())           # Clean the environment
+options(scipen=6)       # display digits proberly!! not the scientific version
+options(digits.secs=6)  # use milliseconds in Date/Time data types
+options(warning=FALSE)  # don't show warnings
+library(knitr)          # set global knitr options of the document
+# Here we set the figure path to be in the figure folder and we also set the R code invisible to not show when the document is rendered
+opts_chunk$set(comment="", message = FALSE, echo=FALSE, error=FALSE, warning=FALSE)
+```
+
+```{r directorySetup,comment=FALSE, message = FALSE, echo=FALSE,warning=FALSE}
+dataFolder   <- file.path("data")   # Set path to the data and figure folder
+figureFolder <- file.path("figures")
+RFolder      <- file.path("R")      # Set the path to the RScript folder
+# Load the R libraries
+# install.packages(c("plyr","reshape2","ggmap","ggplot2","scales","rgdal","maptools","tools"),dependencies = TRUE)
+l<-lapply(list("plyr","reshape2","ggmap","ggplot2","scales","rgdal","maptools","tools"), require, character.only = TRUE)
+```
+
+## Introduction 
+
+This example publication is aimed to serve as a motivation on how to create reproducible documents in R and to advocate in general reproducible research.
+
+## State of the Art
+
+Various authors in qualitative and quantitive research argue for that as many parts of the research workflow reproducible. @Brunsdon2015 state "Reproducible quantitative research is research that has been documented sufficiently rigorously that a third party can replicate any quantitative results that arise". 
+
+To further motivate you, read [@Healy2016,@Leveque2012,@Baker2016,@Nature2016,@Pebesma2012,@Vandewalle2012,@Nuest2011,@Buckheit1995,@Healy2011] or the short and to the point editorial of @Nature2016.
+
+## Case Study - Parc Adula
+
+This case study presents a small subset of a current study conducted at the Department of Geography at the University of Zurich. The study investigates the development of a second Swiss National Park - the _Adula Parc_. 
+
+### Exploratory topic analysis
+
+For this case study 16 interviews have been carried out. Each of these guided interviews got annotated based on a predefined topic tree. The following plots displays a sample of an output from MXAQDA as software for qualitative data analysis.
+
+Overview on the held interviews and representants:
+
+* _Cantonal Goverment_ (n: 4): Representants of four different involved departments
+* _Environmental Organisation_ (n: 1): Involved as a stackholder in the park planning
+* _Federal Goverment_ (n: 2): Responsible that the parc follows regulations of 'Natur- und Heimatschutz'
+* _Local_ (n: 5): Local representants of the park region
+* _Parc Team_ (n: 2 ): Team member involved in the park planning
+* _Tourism_ (n: 2): Local tourism representants
+
+
+The following plot presents the frequency of occurence of a select list of topics that occured in the interviews. While there seem to be spent more focus on the _Pro Argument_ against the _Contra Argument_ during the interviews. It is interesting to see that comparing topics on _Tourismus_ have far more weight than those on _Biodiversität_.
+
+```{r read}
+d <- read.csv(file.path(dataFolder,"interview_data.csv"),sep=";",stringsAsFactors = FALSE)
+names(d) <- gsub("[.]"," ", names(d))
+d <- cbind(d[,1:4],d[ , order(names(d[,5:ncol(d)]),decreasing = TRUE)+4]) # column order hack
+d <- ddply(d, .(ParentCode), numcolwise(sum)) # summarise variable
+d.m <- melt(d)
+```
+
+```{r tableTopics}
+ds <-data.frame(Code=d$ParentCode,Mention=rowSums(d[,2:ncol(d)]))
+knitr::kable(ds, caption = "Topic mentions.")
+```
+
+Figure presents the frequences matrix of the topics occurences across the different interviews. It provides an overview on where and by which representant topics occur.
+
+```{r plotfreq,fig.height=4,fig.width=6,fig.cap="Frequency matrix of a selected list of topics across the various representants"}
+p <- ggplot(d.m, aes(x=ParentCode,variable)) + geom_tile(aes(fill = value), colour = "white") + scale_fill_gradient(low = "white", high = "steelblue")
+p <- p + theme_bw()  + labs(x = "Topic",y = "Participants", title="Frequency of topic occurences") + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5, colour = "grey50"))+ scale_x_discrete(expand = c(0, 0))+ guides(fill=guide_legend(title="Topic \nfrequencies"))
+p
+```
+
+**Notes on reproducibility:** Depending on the data to analize privacy plays a role. While for the analysis itself the data is being anonymised, storing the raw or preprocessed data on a public repository may poses issues regarding the privacy of the data.
+
+### Google query timeline
+
+```{r readGoogleTrend}
+# https://www.google.com/trends/explore?date=all&q=parc%20adula
+d <- read.csv(file.path(dataFolder,"google_trend.csv"),sep=",",stringsAsFactors = FALSE,skip = 2)
+names(d)<- c("Month","Count")
+d$Month <- as.Date(paste(d$Month,"-01",sep=""))
+# keep only the queries after March 2007, seems that before the counting is weird..
+d<-d[d$Month>as.Date("2007-03-01"),]
+```
+
+Overview on the Google trend evolution on the search query: _Parc Adula_ ([url](https://www.google.com/trends/explore?date=all&q=parc%20adula), provides a CSV file). The timeline shows overall a small amount of queries for this word combination, with a spike on `r d[which.max(d$Count),"Month"]`. The has been retrieved on August 11, 2016.
+
+
+**Notes on reproducibility:** Due to license restrictions of the open geodata it is not possible to store the data on a public Git repository. The included script `R/loadMapData.r` downloads the data directly from the link provided in the geodata catalog infobox of http://maps.geo.admin.ch
+
+
+```{r googleTrend,fig.height=2,fig.width=5,fig.cap="Timeline of queries for Parc Adula set in the Google search engine"}
+ggplot( d, aes(Month, Count)) + geom_line() +labs(list(x = "", y = "Monthly Queries", title ="Google Trend queries for 'Parc Adula'"))+theme_bw()
+```
+
+
+### Case study area
+
+Parc Adula is situated in Switzerland in the border region of the cantons Ticino and Grisons. The map below presents the current outer perimiter of the planned national parc.
+
+
+**Notes on reproducibility:** Due to license restrictions of the open geodata it is not possible to store the data on a public Git repository. The included script `R/loadMapData.r` downloads the data directly from the link provided in the geodata catalog infobox of http://maps.geo.admin.ch
+
+
+```{r map,fig.width=4, out.width = "60%",fig.cap="Planned perimeter of Parc Adula, Switzerland, Data source: Swisstopo"}
+# Download and extract Shapefiles from geo.admin.ch
+# Due to license restrictions, we can't store the data on a public Git repository.
+# https://map.geo.admin.ch/?topic=ech&lang=de&bgLayer=ch.swisstopo.pixelkarte-farbe&catalogNodes=458,532,639,653&layers=ch.swisstopo.swissboundaries3d-land-flaeche.fill,ch.swisstopo.swissboundaries3d-kanton-flaeche.fill,ch.bafu.schutzgebiete-paerke_nationaler_bedeutung&X=190000.00&Y=662000.00&zoom=1&layers_opacity=1,1,0.85
+
+# Create the map if the map images does not exist
+mapPng <- file.path(figureFolder,"map.png")
+if(!file.exists(mapPng)){
+  # the map generation code is stored in an external R script to increase the 
+  # readibility of this Rmd file
+  source(file.path(RFolder,"loadMapData.r"))
+}else{knitr::include_graphics(mapPng)}
+```
+
+## Discussion &  Conclusions
+
+This template based on data of an ongoing presents some typical examples maybe used in a publication writen in RMarkdown. It presents the inclusion of data and analysis, features plots, tables, and various markdown elements and shows how to integrate literature. The generated files in _PDF_, _Word_ or _HTML_ often still need fine some fine-tuning afterwards (particularly in Latex). However, it still presents a great way documenting the research process, that is easily shareable and the generation of the initial drafts.
+
+# Acknowledgements
+
+The Reproducible Research workshop was supported by the InnoPool of the Department of Geography, University of Zurich.
+
+
+```{r session_info, results='markup'}
+# Session info (include it for your own reproducibility)
+# devtools::session_info()
+```
+
+# References

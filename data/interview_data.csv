@@ -1,0 +1,34 @@
+Pfad;ParentCode;Subcode1;Subcode2;Federal Gov 1;Federal Gov 2;Tourism 1;Local 9;Local 8;Local 2;Parc Adula Team 1;Local 5;Cantonal Gov 3;Cantonal Gov 2;Environmental Organization 1;Cantonal Gov 1;Tourism 2;Parc Adula Team 2;Local 1;Cantonal Gov 4
+Contra Argument;Contra Argument;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+Contra Argument\Intakte Natur (braucht keinen Schutz);Contra Argument;Intakte Natur (braucht keinen Schutz);;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0
+Contra Argument\Verkaufsinstrument;Contra Argument;Verkaufsinstrument;;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0
+Contra Argument\Verbotsstrategie;Contra Argument;Verbotsstrategie;;0;0;0;0;0;0;0;0;2;0;0;0;0;0;0;0
+Contra Argument\Idee von aussen;Contra Argument;Idee von aussen;;0;0;0;0;0;0;0;0;0;0;1;0;0;7;0;0
+Contra Argument\Negatives GefÅhl;Contra Argument;Negatives GefÅhl;;0;0;0;0;0;0;0;1;1;0;2;0;0;1;0;0
+Contra Argument\BefÅrchtungen Park Auswirkung;Contra Argument;BefÅrchtungen Park Auswirkung;;0;0;1;0;0;0;0;0;1;0;0;0;0;4;2;0
+Contra Argument\BefÅrchtungen Park Auswirkung\EinschrÑnkung;Contra Argument;BefÅrchtungen Park Auswirkung;EinschrÑnkung;0;0;0;0;0;3;0;1;0;1;4;0;1;1;2;1
+Tourismus allgemein;Tourismus allgemein;;;0;0;0;0;2;0;0;0;1;2;0;0;0;0;0;0
+Tourismus allgemein\Tourismus Vals;Tourismus allgemein;Tourismus Vals;;0;0;0;0;0;2;0;0;0;0;0;0;5;0;3;0
+Tourismus allgemein\Tourismus Vals\Park vs. Luxustourismus;Tourismus allgemein;Tourismus Vals;Park vs. Luxustourismus;0;0;0;0;0;0;0;0;0;0;2;0;0;1;2;0
+Tourismus allgemein\Tourismus Vals\Marketing Vals;Tourismus allgemein;Tourismus Vals;Marketing Vals;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0
+Tourismus allgemein\Tourismus Vals\Hotelturm Vals;Tourismus allgemein;Tourismus Vals;Hotelturm Vals;0;0;0;0;0;1;0;0;0;0;2;0;2;5;2;0
+Tourismus allgemein\Tourismus Vals\Architektur-Tourismus;Tourismus allgemein;Tourismus Vals;Architektur-Tourismus;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0
+Tourismus allgemein\zu viele Touristen;Tourismus allgemein;zu viele Touristen;;0;0;0;0;1;0;0;0;1;0;0;0;0;0;0;0
+Tourismus allgemein\Zielgruppe Park-Tourist;Tourismus allgemein;Zielgruppe Park-Tourist;;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0
+Tourismus allgemein\Tourismus Projekte Lumnezia;Tourismus allgemein;Tourismus Projekte Lumnezia;;0;0;2;0;0;0;0;0;0;0;0;0;0;0;0;0
+Tourismus allgemein\Kommunikation Park-Tourismus;Tourismus allgemein;Kommunikation Park-Tourismus;;0;0;3;0;0;0;0;0;0;0;0;0;2;0;0;0
+Tourismus allgemein\LogiernÑchterÅckgang;Tourismus allgemein;LogiernÑchterÅckgang;;0;0;1;0;0;0;1;0;0;0;0;0;0;1;1;0
+Biodiversitaet;Biodiversitaet;;;0;0;0;0;0;0;0;0;0;0;2;2;0;0;0;0
+Biodiversitae\Wald;Biodiversitaet;Wald;;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0
+Pro Argument;Pro Argument;;;0;0;0;0;0;1;0;0;0;0;4;0;0;0;0;0
+Pro Argument\Kooperation;Pro Argument;Kooperation;;0;0;0;0;0;1;0;0;0;1;0;0;0;0;0;0
+Pro Argument\Hoffnung;Pro Argument;Hoffnung;;0;0;0;0;0;0;0;0;0;0;1;1;0;1;0;0
+Pro Argument\Park als Chance;Pro Argument;Park als Chance;;0;0;0;0;0;0;0;0;0;2;0;0;0;0;4;0
+Pro Argument\Park als Chance\Park fuer sensibilisierung Bev;Pro Argument;Park als Chance;Park fÅr Sensibilisierung Bev;0;0;0;0;0;0;0;0;0;0;0;0;0;0;2;0
+Pro Argument\BiodiversitÑtskonvention;Pro Argument;BiodiversitÑtskonvention;;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+Pro Argument\Politische Pro-Argumente;Pro Argument;Politische Pro-Argumente;;1;4;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+Pro Argument\Regionalentwicklung;Pro Argument;Regionalentwicklung;;0;3;0;0;0;0;1;0;0;4;1;6;0;1;1;1
+Pro Argument\nicht Natur/Landschaft als Argument;Pro Argument;nicht Natur/Landschaft als Argument;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0
+Pro Argument\ParkflÑche CH;Pro Argument;ParkflÑche CH;;0;2;0;0;0;0;0;0;0;0;1;0;0;0;0;0
+Pro Argument\Tourismus;Pro Argument;Tourismus;;0;0;2;1;0;0;1;0;0;1;5;0;0;0;8;1
+Pro Argument\Landwirtschaft;Pro Argument;Landwirtschaft;;0;0;0;0;0;0;0;0;0;0;3;0;0;0;0;0
