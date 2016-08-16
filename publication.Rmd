@@ -52,7 +52,7 @@ To further motivate you, read [@Healy2016,@Leveque2012,@Baker2016,@Nature2016,@P
 
 ## Case Study - Parc Adula
 
-This case study presents a small subset of a current study conducted at the Department of Geography at the University of Zurich. The study investigates the development of a second Swiss National Park - the _Adula Parc_. 
+This case study presents a small subset of a current study conducted at the Department of Geography at the University of Zurich. The study investigates the development of a second Swiss National Park, the _Adula Parc_. 
 
 ### Exploratory topic analysis
 
