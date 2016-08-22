@@ -139,7 +139,7 @@ if(!file.exists(mapPng)){
 
 ## Discussion &  Conclusions
 
-This template based on data of an ongoing presents some typical examples maybe used in a publication writen in RMarkdown. It presents the inclusion of data and analysis, features plots, tables, and various markdown elements and shows how to integrate literature. The generated files in _PDF_, _Word_ or _HTML_ often still need fine some fine-tuning afterwards (particularly in Latex). However, it still presents a great way documenting the research process, that is easily shareable and the generation of the initial drafts.
+This template based on data of an ongoing research project presents some typical examples maybe used in a publication writen in RMarkdown. It presents the inclusion of data and analysis, features plots, tables, and various markdown elements and shows how to integrate literature. The generated files in _PDF_, _Word_ or _HTML_ often still need fine some fine-tuning afterwards (particularly in Latex). However, it still presents a great way documenting the research process, that is easily shareable and the generation of the initial drafts.
 
 # Acknowledgements
 
