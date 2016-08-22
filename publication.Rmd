@@ -107,7 +107,7 @@ d<-d[d$Month>as.Date("2007-03-01"),]
 Overview on the Google trend evolution on the search query: _Parc Adula_ ([url](https://www.google.com/trends/explore?date=all&q=parc%20adula), provides a CSV file). The timeline shows overall a small amount of queries for this word combination, with a spike on `r d[which.max(d$Count),"Month"]`. The has been retrieved on August 11, 2016.
 
 
-**Notes on reproducibility:** Due to license restrictions of the open geodata it is not possible to store the data on a public Git repository. The included script `R/loadMapData.r` downloads the data directly from the link provided in the geodata catalog infobox of http://maps.geo.admin.ch
+**Notes on reproducibility:** API are subject to license restrictions, consider them carefully before using them in a scientific project. You may also consider store the raw on a local repository, for instance for cases where the services seizes to exist or the data is subject to change based on when you query it.
 
 
 ```{r googleTrend,fig.height=2,fig.width=5,fig.cap="Timeline of queries for Parc Adula set in the Google search engine"}
