@@ -1,7 +1,6 @@
-# rr-r-publication
-Reproducible Research Workshop Demo repository for publication writing in R
+![](img/header.png)
 
-# Tutorial 2: Writing publications with R (Work in progress!)
+# RR Workshop Tutorial: Writing publications with R (Work in progress!)
 
 This tutorial in the context of the **Reproducible Research Workshop** provides you with the first steps on how to write publications in R.
 
@@ -31,9 +30,9 @@ R with the help of some tools mainly knitr and behind the scenes Pandoc enables 
 The key elements in this process are: 
 
 * **[RMarkdown](http://rmarkdown.rstudio.com):** Convenient to produce reproducible documents. It allows to combine your text content and code in one single file. Simply put it's markdown text with distinct are code blocks. Good for version control.
-* **Markdown: TODO Add link** Simple markup language, fast to write and easy to read, lacks fancy formating options (but are they really needed?)
+* **[Markdown](https://daringfireball.net/projects/markdown):** Simple markup language, fast to write and easy to read, lacks fancy formating options (but are they really needed?)
 * **[knitr](http://yihui.name/knitr):** R package for dynamic report generation in R 
-* **[Pandoc](http://johnmacfarlane.net/pandoc):** Universal document converter, pandoc is your swiss army-knife to render documents from one markup language into another.
+* **[Pandoc](http://johnmacfarlane.net/pandoc):** Universal document converter, pandoc is your swiss army-knife to convert and render documents from one markup language into another. (RStudio comes with the Pandoc binaries included)
 
 In **RMarkdown** the text is written in _markdown_ and the _R code_ is put in distinct _code blocks_ (or code chunks). The text and R chunks together are then rendered with the knitr package to a document.
 
@@ -56,110 +55,164 @@ Ideally you also have Git ([Download Git](https://git-scm.com/downloads)) instal
 
 1. **R ([Download R](https://cloud.r-project.org)):** Download and install R (if not already installed).
 2. **RStudio ([Download RStudio Desktop](https://www.rstudio.com/products/RStudio/#Desktop)):**  Download and Install RStudio (if not already installed) 
-3. **Miktex ([Download Miktex](http://miktex.org))**: Download and install Miktex, if you want to generate PDF documents. To generate PDFs Pandoc requires an working Latex environment. 
-4. (Git Tutorial) **Git ([Download Git](https://git-scm.com/downloads)):** Download and Install Git. 
+3. **Miktex ([Download Miktex](http://miktex.org/download))**: Download and install Miktex, if you want to generate PDF documents. To generate PDFs Pandoc requires an working Latex environment. 
+4. (Git Tutorial) **Git ([Download Git](https://git-scm.com/downloads)):** Download and Install Git. _([Miktex Portable (http://miktex.org/portable))_
    _Optional Git clients: [SourceTree](https://www.sourcetreeapp.com) or [GitHub Desktop](https://desktop.github.com)_.
 5. (Git Tutorial) **GitHub account**: On [GitHub](https://github.com/) create yourself a free GitHub account. _If you are new to Git follow the 15 min [TryGit Tutorial](https://try.github.io) to get a quick introduction to Git._ 
 
 **2. Setup up Latex/Miktex in RStudio**:
 
-**TODO** check which settings or tutorials to use
+With Miktex installed the generation of PDF files via Latex should run just fine. RStudio will find the Latex environment through the PATH variable.
 
-## Part 2: Generate a simple RMarkdown file
+**Note:** On windows check the PATH variables in R console with `Sys.getenv("PATH")` (If you want to set a PATH variable for one session only, you can use the following command `Sys.setenv(PATH = paste(Sys.getenv("PATH"), "C:\\YOURPATH\\MikTeX\\miktex\\bin", sep=.Platform$path.sep))`)
 
-RMarkown file consists of a **YAML Metadata** block, **Markdown** text elements and **R Code chunks** illustrated in the next figure.
+**3. Install the knitr package:** To generate knit packages, you need the **knit** package in R. Type the following in the R console `install.packages("knit")` and hit enter to install this package. 
 
-![R Markdown](img/RMarkdown.png)
+## Part 2: Download the Github repository with the tutorial project
 
-**YAML Metadata:** blocks serves to include some metadata about the RMarkdown document, such as who is the author of the document or should it be rendered into a HTML, PDF or a word document. A YAML block is on the top of the page and delimited with `---`.
+The following Github repository https://github.com/314a/rr-r-publication contains the example files used in this tutorial. You can either download the repository .zip file or clone the project as a new R Project.
 
-The plain text elements are structured with the **Markdown** syntax. In RStudio got to _Help > Markdown Quick Reference_ to open the Markdown syntax reference.
+a) **Download .zip** file https://github.com/314a/rr-rstudio-git/archive/master.zip. Unzip the file in your R Workspace folder, where you store all your different RProjects. Rename the _master_ folder to _rr-r-publication_. Within this folder open the _rr-r-publication.RProj_ file to open this RStudio project.
+b) **Clone the repository**: If you have Git installed, go to _File > New Project..._ and create a new project from _Version Control_ and enter the following repository url: `https://github.com/314a/rr-r-publication.git`. RStudio then clones the repository into R workspace folder you provided.
 
-The **R code chunks** are where you can add your R code and start with ` ```{r *} ` on a new line and end with ` ``` `.
+## Part 3: Generate a simple RMarkdown file
 
+A RMarkown file consists of **Markdown** text, **R Code chunks** and a optional **YAML header**.
 
-**1. Create an new RMarkdown document**: In RStudio go to _File > New File > RMarkdown..._
+* The **YAML header** block on top of the file serves to include some metadata about the RMarkdown document, such as who is the author of the document or should it be rendered into a HTML, PDF or a word document. A YAML block is on the top of the page and delimited with `---`.
+* The **R code chunks** are where you can add your R code and start with ` ```{r} ` on a new line and end with ` ``` ` on a new line. 
+* The rest of the document is a plain text document with the **Markdown** syntax. In RStudio got to _Help > Markdown Quick Reference_ to open the Markdown syntax reference. 
+
+The following minimal RMarkdown example contains all three RMarkdown parts, a YAML header in the beginning, text with the Markdown syntax and R code chunks.
+
+**RMarkdown minimal example:**
+
+    ---
+    title: "RMarkdown Minimal Example"
+    author: "John Snow"
+    date: "19 August 2016"
+    output: html_document
+    ---
+    
+    ## Markdown 
+    
+    This is a **RMarkdown** document. You can write text in **bold** or _cursive_, include [links](http://geo.uzh.ch) or add inline formulae $y=x+3$
+    
+    ## Markdown with R code
+    
+    ```{r}
+    d  <- data.frame(participants=1:10,height=rnorm(10,sd=30,mean=170)) 
+    summary(d)
+    ```
+    you can include R elements inline and generate plots:
+    
+    ```{r chunk_name}
+    plot(d)
+    ```
+    
+    There were `r nrow(d)` participants.
+
+**1. Create an new RMarkdown document**: In RStudio go to _File > New File > RMarkdown..._. In the menu keep the default output format as _HTML_ and press OK. RSTudio opens an example RMarkdown document to provide a fast dive into RMarkdown. Copy the content of the **RMarkdown minimal example** and replace the new RMarkdown example with it.
 
 ![R Markdown File](img/RMarkdownNewFile.png)
 
-In the menu provide a _title_, an _author_ and keep the default output format as _HTML_. RSTudio opens the following example document to provide a fast dive into RMarkdown.
-
-**2. Generate the HTML document**: Rather _knit_ the document. On top of the RMarkdown document press the _knit HTML_ button. Depending on the settings in the YAML metadata it should be set to HTML.
+**2. Generate the HTML document**: Rather _knit_ the document. First save the RMarkdown file as _publication_minimal.Rmd_ in your R working directory. On top of the RMarkdown document press the _knit HTML_ button. Depending on the settings in the YAML metadata it should be set to HTML. After some seconds the created html document will open in a separate window in RStudio.
 
 ![RSTudio knit menu](img/RStudio-knit.png)
 
-**3.  Edit the RMarkdown file **: 
+**3.  Edit Markdown elements**: Now lets edit the RMarkdown file. Include the following snippet with new Markdown elements -- a list, a table and an image -- below the first paragraph (Line 10) of your document and knit the document again.
 
-- edit markdown
-- edit code (make it visible)
+    **List:**
+    
+    1. ordered list element
+    2. make it an unordered list 
+    3. replace the numbers with `*`  
+    
+    **Table:**
+    
+    Name          | Value
+    --------------| ------------------
+    Reproducible  | is coool
+    Research      | and fun!
+    
+    : This is a table caption
+    
+    **Image:**
+    
+    ![Reproducible Research Logo](figures/logo.png)
+    
+**4. Edit R code chunks:** R chunks are evluated in order as they appear in the document. It is good practice to give each code chunk a name like `chunk_name` in the second r code chunk in our file. Let's rename the first code chunk to `{r simulate_data}` and the second to `{r scatterplot}`. 
+
+R code chunks will print the R code and the output of that code chunk. _Chunk options_ allow to modify the behavior on how the code chunk 'behaves'. If no R code should be printed, then set the `echo = FALSE` option or if the figure size should overwrite the default size set `fig.width=4,fig.height=2`.
+
+    ```{r simulate_data, echo=FALSE}
+    d  <- data.frame(participants=1:10,height=rnorm(10,sd=30,mean=170)) 
+    summary(d)
+    ```
+    you can include R elements inline and generate plots:
+    
+    ```{r scatterplot, echo=FALSE, fig.width=4,fig.height=2}
+    plot(d)
+    ```
+    
+**Advanced:** You can set these options also globally with `opts_chunk$set` in the beginning of the RMarkown file. I often use the following code chunk in the beginning of each RMarkdown document (after the header).
+
+    ```{r setup,comment=FALSE, message = FALSE, echo=FALSE,warning=FALSE}
+    rm(list=ls())           # Clean the environment
+    options(scipen=6)       # display digits proberly!! not the scientific version
+    options(digits.secs=6)  # use milliseconds in Date/Time data types
+    options(warning=FALSE)  # don't show warnings
+    library(knitr)          # set global knitr options of the document
+    # Here we set the figure path to be in the figure folder and we also set the R code invisible to not show when the document is rendered
+    opts_chunk$set(comment="", message = FALSE, echo=FALSE, error=FALSE, warning=FALSE)
+    ```
+
+**5. Edit the YAML header:** Lets edit the header by adding our names and even mix in R code to automatically set the document date to today.
+
+    ---
+    title: "RMarkdown Minimal Example"
+    author: "your name"
+    date: "`r Sys.Date()`"
+    output: html_document
+    ---
+    
 - edit yaml 
-
-
-
-## RMarkdown + RStudio 
-
-
-RStudio:    
-Simply go to **File -> New File -> R Markdown...**    
-and select in the opening interface **"Document"**.
-
-Note: For PDF generation you need an installed latex environment (e.g. [Miktex ](http://miktex.org/))
-
-
-## RMarkdown 
 
 
 
 ## Create and structure an R project 
 
----------------------- ---------------------------------------------------------------
-**Folder structure:**  What structure might be useful?
-**Data organisation:** How do you organise your (raw/derived) data? 
-**Documentation:**     What do you document? Will you be reusing the data? Difficult parts, will you remember how you did it?
-**Scope:**             What's the scope of the project?
-**Report:**            Report structure
-**Reusability:**       Which functionalities will you reuse?
-**Extendable:**        What if the project becomes larger?
----------------------- ---------------------------------------------------------------
+* **Folder structure:**: What structure might be useful?
+* **Data organisation:**: How do you organise your (raw/derived) data? 
+* **Documentation:**: What do you document? Will you be reusing the data? Difficult parts, will you remember how you did it?
+* **Scope:**: What's the scope of the project?
+* **Report:**: Report structure
+* **Reusability:**: Which functionalities will you reuse?
+* **Extendable:**: What if the project becomes larger?
 
-## Example folder structure 
+**Example folder structure:**   
 
---------------------- -----------------------------------------
-**R**                 R folder storing all the *.r* code files
-**data**              Data folder with the raw and the derived data (e.g. data.csv, data.RData)
-**figures**           Figure folder (e.g. pictures, logo etc.)
-*myproject.RProj*     RStudio project file
-*ProjectReport.Rmd*   RMarkdown storing the report text and R analysis code
-*ProjectReport.pdf*   Generated report from the RMarkdown file
-*Readme.txt*          Information about the project. *(good practice)*
---------------------- -----------------------------------------
-
+* **R**: R folder storing all the *.r* code files
+* **data**: Data folder with the raw and the derived data (e.g. data.csv, data.RData)
+* **figures**: Figure folder (e.g. pictures, logo etc.)
+* *myproject.RProj*: RStudio project file
+* *ProjectReport.Rmd*: RMarkdown storing the report text and R analysis code
+* *ProjectReport.pdf*: Generated report from the RMarkdown file
+* *README.md*: Information about the project. *(good practice)*
     
-This project folder:     
-![project folder](img/projectfolder.png)
-
-## Workflow 
-
-Structure your project into the following steps:
-
-1. Data collection 
-2. Preprocessing
-3. Analysis
-4. Presentation 
 
 ## Practical tips
-
 
 1. Create an RStudio project for every project in a separate folder 
 2. Document everything, your documents should be understandable by someone other than you
 3. Plan your project, organise and store your data, code and reports
 4. Start small, with a subset of your data
 5. Link your workflow (e.g. data files as an input to your analysis files)
+6. Structure your project into the following steps: 1. Data collection; 2. Preprocessing; 3. Analysis; 4. Presentation 
 
+## Useful links
 
-## Cheatsheets
-
-- [RMarkdown](http://shiny.rstudio.com/articles/rm-cheatsheet.html) https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf
-- [RMarkdown 2](http://www.utstat.toronto.edu/reid/sta2201s/rmarkdown-reference.pdf)
+- [RMarkdown cheatsheet](http://shiny.rstudio.com/articles/rm-cheatsheet.html) https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf
+- [RMarkdown 2 cheatsheet](http://www.utstat.toronto.edu/reid/sta2201s/rmarkdown-reference.pdf)
 
 
