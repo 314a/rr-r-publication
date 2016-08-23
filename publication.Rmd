@@ -16,9 +16,9 @@ output:
 csl: springer-basic.csl
 abstract: "This is the abstract of the template document used to show how to write
   \npublications in R with R Markdown and the help of some packages.  Based on a \nconcrete
-  usecase this document exemplifies some of the caveats that may occur\nwhen writing
-  such document and publish it online on a GIT repository. It also\npresents typical
-  usecases in MarkDown usage and presents some tricks.\n     \n"
+  use case, this document exemplifies some of the caveats that may occur\nwhen writing
+  such a document and publishing it online on a Git repository. It also\npresents typical
+  use cases in Markdown usage and presents some tricks.\n     \n"
 ---
 
 ```{r setup,comment=FALSE, message = FALSE, echo=FALSE,warning=FALSE}
@@ -42,33 +42,33 @@ l<-lapply(list("plyr","reshape2","ggmap","ggplot2","scales","rgdal","maptools","
 
 ## Introduction 
 
-This example publication is aimed to serve as a motivation on how to create reproducible documents in R and to advocate in general reproducible research.
+This example publication serves as a motivation on how to create reproducible documents in R and aims to promote reproducible research in general.
 
 ## State of the Art
 
-Various authors in qualitative and quantitive research argue for that as many parts of the research workflow reproducible. @Brunsdon2015 state "Reproducible quantitative research is research that has been documented sufficiently rigorously that a third party can replicate any quantitative results that arise". 
+Various authors in qualitative and quantitive research argue that as many parts of the research workflow as possible should be reproducible. @Brunsdon2015 state "Reproducible quantitative research is research that has been documented sufficiently rigorously that a third party can replicate any quantitative results that arise". 
 
-To further motivate you, read [@Healy2016,@Leveque2012,@Baker2016,@Nature2016,@Pebesma2012,@Vandewalle2012,@Nuest2011,@Buckheit1995,@Healy2011] or the short and to the point editorial of @Nature2016.
+To further motivate you, read [@Healy2016,@Leveque2012,@Baker2016,@Nature2016,@Pebesma2012,@Vandewalle2012,@Nuest2011,@Buckheit1995,@Healy2011] or the short and to the point editorial from @Nature2016.
 
-## Case Study - Parc Adula
+## Case Study: Parc Adula
 
-This case study presents a small subset of a current study conducted at the Department of Geography at the University of Zurich. The study investigates the development of a second Swiss National Park, the _Adula Parc_. 
+This case study presents a small subset of data from a current study conducted at the Department of Geography at the University of Zurich. The study investigates the development of a second Swiss National Park, the _Adula Parc_. 
 
 ### Exploratory topic analysis
 
-For this case study 16 interviews have been carried out. Each of these guided interviews got annotated based on a predefined topic tree. The following plots displays a sample of an output from MXAQDA as software for qualitative data analysis.
+For this case study, 16 interviews were carried out. Each of these guided interviews was annotated based on a predefined topic tree. The following plots display sample output from the MXAQDA software for qualitative data analysis.
 
-Overview on the held interviews and representants:
+Overview of the interviews and representatives:
 
-* _Cantonal Goverment_ (n: 4): Representants of four different involved departments
-* _Environmental Organisation_ (n: 1): Involved as a stackholder in the park planning
-* _Federal Goverment_ (n: 2): Responsible that the parc follows regulations of 'Natur- und Heimatschutz'
-* _Local_ (n: 5): Local representants of the park region
-* _Parc Team_ (n: 2 ): Team member involved in the park planning
-* _Tourism_ (n: 2): Local tourism representants
+* _Cantonal Goverment_ (n: 4): Representatives from four different departments
+* _Environmental Organisation_ (n: 1): Involved as a stakeholder in the park planning
+* _Federal Goverment_ (n: 2): Must ensure the park follows the 'Natur- und Heimatschutz' regulations
+* _Local_ (n: 5): Local representatives of the park region
+* _Parc Team_ (n: 2): Team members involved in the park planning
+* _Tourism_ (n: 2): Local tourism representatives
 
 
-The following plot presents the frequency of occurence of a select list of topics that occured in the interviews. While there seem to be spent more focus on the _Pro Argument_ against the _Contra Argument_ during the interviews. It is interesting to see that comparing topics on _Tourismus_ have far more weight than those on _Biodiversität_.
+The following plot presents the frequency of occurence of a select list of topics that occured in the interviews. While there seems to be more focus on the _Pro Argument_ against the _Contra Argument_ during the interviews, topics on _Tourismus_ seem to have far more weight than those on _Biodiversität_.
 
 ```{r read}
 d <- read.csv(file.path(dataFolder,"interview_data.csv"),sep=";",stringsAsFactors = FALSE)
@@ -83,7 +83,7 @@ ds <-data.frame(Code=d$ParentCode,Mention=rowSums(d[,2:ncol(d)]))
 knitr::kable(ds, caption = "Topic mentions.")
 ```
 
-Figure presents the frequences matrix of the topics occurences across the different interviews. It provides an overview on where and by which representant topics occur.
+The next figure presents the frequency matrix of the topic occurences across the different interviews. It provides an overview of where topics are mentioned and by whom.
 
 ```{r plotfreq,fig.height=4,fig.width=6,fig.cap="Frequency matrix of a selected list of topics across the various representants"}
 p <- ggplot(d.m, aes(x=ParentCode,variable)) + geom_tile(aes(fill = value), colour = "white") + scale_fill_gradient(low = "white", high = "steelblue")
@@ -91,7 +91,7 @@ p <- p + theme_bw()  + labs(x = "Topic",y = "Participants", title="Frequency of 
 p
 ```
 
-**Notes on reproducibility:** Depending on the data to analize privacy plays a role. While for the analysis itself the data is being anonymised, storing the raw or preprocessed data on a public repository may poses issues regarding the privacy of the data.
+**Notes on reproducibility:** Depending on the data to analyze, privacy may play a role. While for the analysis itself the data is being anonymised, storing the raw or preprocessed data on a public repository may pose privacy issues or even constitute a violation of contract.
 
 ### Google query timeline
 
@@ -104,10 +104,10 @@ d$Month <- as.Date(paste(d$Month,"-01",sep=""))
 d<-d[d$Month>as.Date("2007-03-01"),]
 ```
 
-Overview on the Google trend evolution on the search query: _Parc Adula_ ([url](https://www.google.com/trends/explore?date=all&q=parc%20adula), provides a CSV file). The timeline shows overall a small amount of queries for this word combination, with a spike on `r d[which.max(d$Count),"Month"]`. The has been retrieved on August 11, 2016.
+Overview of the Google trend evolution of the search query: _Parc Adula_ ([url](https://www.google.com/trends/explore?date=all&q=parc%20adula), provides a CSV file). The timeline shows overall a small amount of queries for this word combination, with a spike on `r d[which.max(d$Count),"Month"]`. This was retrieved on August 11, 2016.
 
 
-**Notes on reproducibility:** API are subject to license restrictions, consider them carefully before using them in a scientific project. You may also consider store the raw on a local repository, for instance for cases where the services seizes to exist or the data is subject to change based on when you query it.
+**Notes on reproducibility:** Web APIs are subject to license restrictions, can get altered by the service provider, or can simply cease to exist, so consider them carefully before using them in a scientific project. Consider instead using software which you can store locally and can better control the parameters and settings. If collecting data from an API, ensure to note down as much as possible about the data collection: the date range, all the query parameters, including the service limits at the time, any interruptions in service, and so on. It's also wise to back up the data thus obtained, if at all possible!
 
 
 ```{r googleTrend,fig.height=2,fig.width=5,fig.cap="Timeline of queries for Parc Adula set in the Google search engine"}
@@ -117,10 +117,10 @@ ggplot( d, aes(Month, Count)) + geom_line() +labs(list(x = "", y = "Monthly Quer
 
 ### Case study area
 
-Parc Adula is situated in Switzerland in the border region of the cantons Ticino and Grisons. The map below presents the current outer perimiter of the planned national parc.
+Parc Adula is situated in Switzerland in the border region of the cantons Ticino and Grisons (Graubünden). The map below presents the current outer perimiter of the planned national park.
 
 
-**Notes on reproducibility:** Due to license restrictions of the open geodata it is not possible to store the data on a public Git repository. The included script `R/loadMapData.r` downloads the data directly from the link provided in the geodata catalog infobox of http://maps.geo.admin.ch
+**Notes on reproducibility:** Due to license restrictions of the open geodata, it is not possible to store the data on a public Git repository. The included script `R/loadMapData.r` downloads the data directly from the link provided in the geodata catalog infobox of http://maps.geo.admin.ch
 
 
 ```{r map,fig.width=4, out.width = "60%",fig.cap="Planned perimeter of Parc Adula, Switzerland, Data source: Swisstopo"}
@@ -137,13 +137,13 @@ if(!file.exists(mapPng)){
 }else{knitr::include_graphics(mapPng)}
 ```
 
-## Discussion &  Conclusions
+## Concluding discussion
 
-This template based on data of an ongoing research project presents some typical examples maybe used in a publication writen in RMarkdown. It presents the inclusion of data and analysis, features plots, tables, and various markdown elements and shows how to integrate literature. The generated files in _PDF_, _Word_ or _HTML_ often still need fine some fine-tuning afterwards (particularly in Latex). However, it still presents a great way documenting the research process, that is easily shareable and the generation of the initial drafts.
+This template is based on data from an ongoing research project and presents some typical examples of material that could be used in a publication written in RMarkdown. It shows how to include data and analyses, features plots, tables, literature, and various markdown elements. The generated files in _PDF_, _Word_ or _HTML_ often still need some fine-tuning afterwards (particularly in Latex). It is nevertheless a great way of documenting the research process, generating initial drafts, and sharing workflows with collaborators or a wider audience.
 
 # Acknowledgements
 
-The Reproducible Research workshop was supported by the InnoPool of the Department of Geography, University of Zurich.
+The Reproducible Research workshop was supported by the InnoPool fund of the Department of Geography, University of Zurich.
 
 
 ```{r session_info, results='markup'}
