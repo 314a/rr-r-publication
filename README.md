@@ -184,6 +184,7 @@ R code chunks will print the R code and the output of that code chunk. _Chunk op
 ## Citation and References
 
 https://www.zotero.org/styles
+http://editor.citationstyles.org/
 
 ## Create and structure an R project 
 
