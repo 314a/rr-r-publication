@@ -52,19 +52,19 @@ To further motivate you, read [@Healy2016,@Leveque2012,@Baker2016,@Nature2016,@P
 
 ## Case Study: Parc Adula
 
-This case study presents a small subset of data from a current study conducted at the Department of Geography at the University of Zurich. The study investigates the development of a second Swiss National Park, the _Adula Parc_. 
+This case study presents a small subset of data from a current study conducted at the Department of Geography at the University of Zurich. The study investigates social negotiations revolving around a national park project in Switzerland – _Parc Adula_ – and aims for a better understanding of how people reason in a public environmental debate. 
 
 ### Exploratory topic analysis
 
-For this case study, 16 interviews were carried out. Each of these guided interviews was annotated based on a predefined topic tree. The following plots display sample output from the MXAQDA software for qualitative data analysis.
+For this case study, 16 interviews were carried out. Each of these semi-structured interviews was analyzed resorting to Mayring's qualitative content analysis (@Mayring2010) – resulting in a code system, which was derived through mainly inductive category development. The following plots display sample output from the MXAQDA software for qualitative data analysis.
 
 Overview of the interviews and representatives:
 
 * _Cantonal Goverment_ (n: 4): Representatives from four different departments
-* _Environmental Organisation_ (n: 1): Involved as a stakeholder in the park planning
-* _Federal Goverment_ (n: 2): Must ensure the park follows the 'Natur- und Heimatschutz' regulations
+* _Environmental Organisation_ (n: 1): Representative from a specific interest group with advisory function. 
+* _Federal Goverment_ (n: 2): Must ensure the park follows the laws and decrees
 * _Local_ (n: 5): Local representatives of the park region
-* _Parc Team_ (n: 2): Team members involved in the park planning
+* _Parc Team_ (n: 2): Team members involved in the park planning process
 * _Tourism_ (n: 2): Local tourism representatives
 
 
@@ -117,7 +117,7 @@ ggplot( d, aes(Month, Count)) + geom_line() +labs(list(x = "", y = "Monthly Quer
 
 ### Case study area
 
-Parc Adula is situated in Switzerland in the border region of the cantons Ticino and Grisons (Graubünden). The map below presents the current outer perimiter of the planned national park.
+The proposed Parc Adula national park candidate is situated in Switzerland in the border region of the cantons Ticino and Grisons (Graubünden). The map below presents the current outer perimiter of the planned national park.
 
 
 **Notes on reproducibility:** Due to license restrictions of the open geodata, it is not possible to store the data on a public Git repository. The included script `R/loadMapData.r` downloads the data directly from the link provided in the geodata catalog infobox of http://maps.geo.admin.ch
@@ -152,3 +152,14 @@ The Reproducible Research workshop was supported by the InnoPool fund of the Dep
 ```
 
 # References
+
+@article{Mayring2010,
+author = {Mayring, Philipp and Fenzl, Thomas},
+file = {:Volumes/amichel/PhD/Literature/Methods/Mayring 2010.pdf:pdf},
+isbn = {9783531920528},
+keywords = {bestimmte variablenindikatoren,f{\"{u}}r auto-,im text fest und,komplexe h{\"{a}}ufigkeitsanalysen setzen theoriegeleitet,psychotherapieproto-,ritarismus entwickelt,sein,so wurden beispielsweise textindikatoren,um beschwerdebriefe auszuwerten oder,z{\"{a}}hlen diese aus},
+mendeley-groups = {Methods},
+pages = {601--613},
+title = {{Qualitative inhaltsanalyse}},
+year = {2014}
+}
