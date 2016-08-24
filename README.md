@@ -120,7 +120,9 @@ The following minimal RMarkdown example contains all three RMarkdown parts, a YA
 
 ![RSTudio knit menu](img/RStudio-knit.png)
 
-**3.  Edit Markdown elements**: Now lets edit the RMarkdown file. Include the following snippet with new Markdown elements -- a list, a table and an image -- below the first paragraph (Line 10) of your document and knit the document again.
+## Part 4: Edit a simple RMarkdown file
+
+**1.  Edit Markdown elements**: Now lets edit the RMarkdown file. Include the following snippet with new Markdown elements -- a list, a table and an image -- below the first paragraph (Line 10) of your document and knit the document again.
 
     **List:**
     
@@ -141,7 +143,7 @@ The following minimal RMarkdown example contains all three RMarkdown parts, a YA
     
     ![Reproducible Research Logo](figures/logo.png)
     
-**4. Edit R code chunks:** R chunks are evluated in order as they appear in the document. It is good practice to give each code chunk a name like `chunk_name` in the second r code chunk in our file. Let's rename the first code chunk to `{r simulate_data}` and the second to `{r scatterplot}`. 
+**2. Edit R code chunks:** R chunks are evluated in order as they appear in the document. It is good practice to give each code chunk a name like `chunk_name` in the second r code chunk in our file. Let's rename the first code chunk to `{r simulate_data}` and the second to `{r scatterplot}`. 
 
 R code chunks will print the R code and the output of that code chunk. _Chunk options_ allow to modify the behavior on how the code chunk 'behaves'. If no R code should be printed, then set the `echo = FALSE` option or if the figure size should overwrite the default size set `fig.width=4,fig.height=2`.
 
@@ -167,7 +169,7 @@ R code chunks will print the R code and the output of that code chunk. _Chunk op
     opts_chunk$set(comment="", message = FALSE, echo=FALSE, error=FALSE, warning=FALSE)
     ```
 
-**5. Edit the YAML header:** Lets edit the header by adding our names and even mix in R code to automatically set the document date to today.
+**3. Edit the YAML header:** Lets edit the header by adding our names and even mix in R code to automatically set the document date to today.
 
     ---
     title: "RMarkdown Minimal Example"
@@ -179,6 +181,9 @@ R code chunks will print the R code and the output of that code chunk. _Chunk op
 - edit yaml 
 
 
+## Citation and References
+
+https://www.zotero.org/styles
 
 ## Create and structure an R project 
 

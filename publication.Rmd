@@ -13,7 +13,7 @@ output:
     fig_caption: yes
     fig_width: 4
     reference_docx: template.docx
-csl: springer-basic.csl
+csl: taylor-and-francis-harvard-x.csl
 abstract: "This is the abstract of the template document used to show how to write
   \npublications in R with R Markdown and the help of some packages.  Based on a \nconcrete
   use case, this document exemplifies some of the caveats that may occur\nwhen writing
@@ -48,7 +48,7 @@ This example publication serves as a motivation on how to create reproducible do
 
 Various authors in qualitative and quantitive research argue that as many parts of the research workflow as possible should be reproducible. @Brunsdon2015 state "Reproducible quantitative research is research that has been documented sufficiently rigorously that a third party can replicate any quantitative results that arise". 
 
-To further motivate you, read [@Healy2016,@Leveque2012,@Baker2016,@Nature2016,@Pebesma2012,@Vandewalle2012,@Nuest2011,@Buckheit1995,@Healy2011] or the short and to the point editorial from @Nature2016.
+To further motivate you, read [@Healy2016;@Leveque2012;@Baker2016;@Nature2016;@Pebesma2012;@Vandewalle2012;@Nuest2011;@Buckheit1995;@Healy2011] or the short and to the point editorial from @Nature2016.
 
 ## Case Study: Parc Adula
 
@@ -153,13 +153,4 @@ The Reproducible Research workshop was supported by the InnoPool fund of the Dep
 
 # References
 
-@article{Mayring2010,
-author = {Mayring, Philipp and Fenzl, Thomas},
-file = {:Volumes/amichel/PhD/Literature/Methods/Mayring 2010.pdf:pdf},
-isbn = {9783531920528},
-keywords = {bestimmte variablenindikatoren,f{\"{u}}r auto-,im text fest und,komplexe h{\"{a}}ufigkeitsanalysen setzen theoriegeleitet,psychotherapieproto-,ritarismus entwickelt,sein,so wurden beispielsweise textindikatoren,um beschwerdebriefe auszuwerten oder,z{\"{a}}hlen diese aus},
-mendeley-groups = {Methods},
-pages = {601--613},
-title = {{Qualitative inhaltsanalyse}},
-year = {2014}
-}
+

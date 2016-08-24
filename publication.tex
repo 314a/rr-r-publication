@@ -90,73 +90,77 @@ Winterthurerstrasse 190, Zurich \\ \href{mailto:name@geo.uzh.ch}{\nolinkurl{name
 \begin{abstract}
 This is the abstract of the template document used to show how to write
 publications in R with R Markdown and the help of some packages. Based
-on a concrete usecase this document exemplifies some of the caveats that
-may occur when writing such document and publish it online on a GIT
-repository. It also presents typical usecases in MarkDown usage and
-presents some tricks.
+on a concrete use case, this document exemplifies some of the caveats
+that may occur when writing such a document and publishing it online on
+a Git repository. It also presents typical use cases in Markdown usage
+and presents some tricks.
 \end{abstract}
 
 \subsection{Introduction}\label{introduction}
 
-This example publication is aimed to serve as a motivation on how to
-create reproducible documents in R and to advocate in general
-reproducible research.
+This example publication serves as a motivation on how to create
+reproducible documents in R and aims to promote reproducible research in
+general.
 
 \subsection{State of the Art}\label{state-of-the-art}
 
-Various authors in qualitative and quantitive research argue for that as
-many parts of the research workflow reproducible. Brunsdon (2015) state
-``Reproducible quantitative research is research that has been
-documented sufficiently rigorously that a third party can replicate any
-quantitative results that arise''.
+Various authors in qualitative and quantitive research argue that as
+many parts of the research workflow as possible should be reproducible.
+Brunsdon (2015) state ``Reproducible quantitative research is research
+that has been documented sufficiently rigorously that a third party can
+replicate any quantitative results that arise''.
 
-To further motivate you, read (Healy 2016,LeVeque et al. (2012),Baker
-(2016),Editorial (2016),Pebesma et al. (2012),Vandewalle (2012),Nüst et
-al. (2011),Buckheit and Donoho (1995),Healy (2011)) or the short and to
-the point editorial of Editorial (2016).
+To further motivate you, read (Buckheit and Donoho 1995, Healy 2011,
+2016, Nüst \emph{et al.} 2011, LeVeque \emph{et al.} 2012, Pebesma
+\emph{et al.} 2012, Vandewalle 2012, Baker 2016, Editorial 2016) or the
+short and to the point editorial from Editorial (2016).
 
-\subsection{Case Study - Parc Adula}\label{case-study---parc-adula}
+\subsection{Case Study: Parc Adula}\label{case-study-parc-adula}
 
-This case study presents a small subset of a current study conducted at
-the Department of Geography at the University of Zurich. The study
-investigates the development of a second Swiss National Park, the
-\emph{Adula Parc}.
+This case study presents a small subset of data from a current study
+conducted at the Department of Geography at the University of Zurich.
+The study investigates social negotiations revolving around a national
+park project in Switzerland -- \emph{Parc Adula} -- and aims for a
+better understanding of how people reason in a public environmental
+debate.
 
 \subsubsection{Exploratory topic
 analysis}\label{exploratory-topic-analysis}
 
-For this case study 16 interviews have been carried out. Each of these
-guided interviews got annotated based on a predefined topic tree. The
-following plots displays a sample of an output from MXAQDA as software
-for qualitative data analysis.
+For this case study, 16 interviews were carried out. Each of these
+semi-structured interviews was analyzed resorting to Mayring's
+qualitative content analysis (Mayring and Fenzl (2014)) -- resulting in
+a code system, which was derived through mainly inductive category
+development. The following plots display sample output from the MXAQDA
+software for qualitative data analysis.
 
-Overview on the held interviews and representants:
+Overview of the interviews and representatives:
 
 \begin{itemize}
 \tightlist
 \item
-  \emph{Cantonal Goverment} (n: 4): Representants of four different
-  involved departments
+  \emph{Cantonal Goverment} (n: 4): Representatives from four different
+  departments
 \item
-  \emph{Environmental Organisation} (n: 1): Involved as a stackholder in
-  the park planning
+  \emph{Environmental Organisation} (n: 1): Representative from a
+  specific interest group with advisory function.
 \item
-  \emph{Federal Goverment} (n: 2): Responsible that the parc follows
-  regulations of `Natur- und Heimatschutz'
+  \emph{Federal Goverment} (n: 2): Must ensure the park follows the laws
+  and decrees
 \item
-  \emph{Local} (n: 5): Local representants of the park region
+  \emph{Local} (n: 5): Local representatives of the park region
 \item
-  \emph{Parc Team} (n: 2 ): Team member involved in the park planning
+  \emph{Parc Team} (n: 2): Team members involved in the park planning
+  process
 \item
-  \emph{Tourism} (n: 2): Local tourism representants
+  \emph{Tourism} (n: 2): Local tourism representatives
 \end{itemize}
 
 The following plot presents the frequency of occurence of a select list
-of topics that occured in the interviews. While there seem to be spent
-more focus on the \emph{Pro Argument} against the \emph{Contra Argument}
-during the interviews. It is interesting to see that comparing topics on
-\emph{Tourismus} have far more weight than those on
-\emph{Biodiversität}.
+of topics that occured in the interviews. While there seems to be more
+focus on the \emph{Pro Argument} against the \emph{Contra Argument}
+during the interviews, topics on \emph{Tourismus} seem to have far more
+weight than those on \emph{Biodiversität}.
 
 \begin{longtable}[c]{@{}lr@{}}
 \caption{Topic mentions.}\tabularnewline
@@ -175,9 +179,9 @@ Tourismus allgemein & 48\tabularnewline
 \bottomrule
 \end{longtable}
 
-Figure presents the frequences matrix of the topics occurences across
-the different interviews. It provides an overview on where and by which
-representant topics occur.
+The next figure presents the frequency matrix of the topic occurences
+across the different interviews. It provides an overview of where topics
+are mentioned and by whom.
 
 \begin{figure}[htbp]
 \centering
@@ -186,25 +190,30 @@ representant topics occur.
 various representants}
 \end{figure}
 
-\textbf{Notes on reproducibility:} Depending on the data to analize
-privacy plays a role. While for the analysis itself the data is being
+\textbf{Notes on reproducibility:} Depending on the data to analyze,
+privacy may play a role. While for the analysis itself the data is being
 anonymised, storing the raw or preprocessed data on a public repository
-may poses issues regarding the privacy of the data.
+may pose privacy issues or even constitute a violation of contract.
 
 \subsubsection{Google query timeline}\label{google-query-timeline}
 
-Overview on the Google trend evolution on the search query: \emph{Parc
+Overview of the Google trend evolution of the search query: \emph{Parc
 Adula}
 (\href{https://www.google.com/trends/explore?date=all\&q=parc\%20adula}{url},
 provides a CSV file). The timeline shows overall a small amount of
-queries for this word combination, with a spike on 2015-11-01. The has
-been retrieved on August 11, 2016.
+queries for this word combination, with a spike on 2015-11-01. This was
+retrieved on August 11, 2016.
 
-\textbf{Notes on reproducibility:} API are subject to license
-restrictions, consider them carefully before using them in a scientific
-project. You may also consider store the raw on a local repository, for
-instance for cases where the services seizes to exist or the data is
-subject to change based on when you query it.
+\textbf{Notes on reproducibility:} Web APIs are subject to license
+restrictions, can get altered by the service provider, or can simply
+cease to exist, so consider them carefully before using them in a
+scientific project. Consider instead using software which you can store
+locally and can better control the parameters and settings. If
+collecting data from an API, ensure to note down as much as possible
+about the data collection: the date range, all the query parameters,
+including the service limits at the time, any interruptions in service,
+and so on. It's also wise to back up the data thus obtained, if at all
+possible!
 
 \begin{figure}[htbp]
 \centering
@@ -215,12 +224,13 @@ engine}
 
 \subsubsection{Case study area}\label{case-study-area}
 
-Parc Adula is situated in Switzerland in the border region of the
-cantons Ticino and Grisons. The map below presents the current outer
-perimiter of the planned national parc.
+The proposed Parc Adula national park candidate is situated in
+Switzerland in the border region of the cantons Ticino and Grisons
+(Graubünden). The map below presents the current outer perimiter of the
+planned national park.
 
 \textbf{Notes on reproducibility:} Due to license restrictions of the
-open geodata it is not possible to store the data on a public Git
+open geodata, it is not possible to store the data on a public Git
 repository. The included script \texttt{R/loadMapData.r} downloads the
 data directly from the link provided in the geodata catalog infobox of
 \url{http://maps.geo.admin.ch}
@@ -229,68 +239,72 @@ data directly from the link provided in the geodata catalog infobox of
 \includegraphics[width=0.6\linewidth]{figures/map} \caption{Planned perimeter of Parc Adula, Switzerland, Data source: Swisstopo}\label{fig:map}
 \end{figure}
 
-\subsection{Discussion \& Conclusions}\label{discussion-conclusions}
+\subsection{Concluding discussion}\label{concluding-discussion}
 
-This template based on data of an ongoing research project presents some
-typical examples maybe used in a publication writen in RMarkdown. It
-presents the inclusion of data and analysis, features plots, tables, and
-various markdown elements and shows how to integrate literature. The
-generated files in \emph{PDF}, \emph{Word} or \emph{HTML} often still
-need fine some fine-tuning afterwards (particularly in Latex). However,
-it still presents a great way documenting the research process, that is
-easily shareable and the generation of the initial drafts.
+This template is based on data from an ongoing research project and
+presents some typical examples of material that could be used in a
+publication written in RMarkdown. It shows how to include data and
+analyses, features plots, tables, literature, and various markdown
+elements. The generated files in \emph{PDF}, \emph{Word} or \emph{HTML}
+often still need some fine-tuning afterwards (particularly in Latex). It
+is nevertheless a great way of documenting the research process,
+generating initial drafts, and sharing workflows with collaborators or a
+wider audience.
 
 \section{Acknowledgements}\label{acknowledgements}
 
-The Reproducible Research workshop was supported by the InnoPool of the
-Department of Geography, University of Zurich.
+The Reproducible Research workshop was supported by the InnoPool fund of
+the Department of Geography, University of Zurich.
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
 \hypertarget{ref-Baker2016}{}
-Baker M, 2016, 1,500 scientists lift the lid on reproducibility.
-\emph{Nature}. 533(7604):452--454.
+Baker, M., 2016. 1,500 scientists lift the lid on reproducibility.
+\emph{Nature}, 533 (7604), 452--454.
 
 \hypertarget{ref-Brunsdon2015}{}
-Brunsdon C, 2015, Quantitative methods I: Reproducible research and
-quantitative geography. Progress in Human Geography. doi:
-\href{https://doi.org/10.1177/0309132515599625}{10.1177/0309132515599625}
+Brunsdon, C., 2015. Quantitative methods I: Reproducible research and
+quantitative geography. \emph{Progress in Human Geography}.
 
 \hypertarget{ref-Buckheit1995}{}
-Buckheit J, Donoho D, 1995, WaveLab and Reproducible Research.
-\emph{Wavelets and Statistics}. 10355--81.
+Buckheit, J. and Donoho, D., 1995. WaveLab and Reproducible Research.
+\emph{Wavelets and Statistics}, 103, 55--81.
 
 \hypertarget{ref-Nature2016}{}
-Editorial, 2016, Reality check on reproducibility. \emph{Nature}.
-533(7604):437--437.
-
-\hypertarget{ref-Healy2016}{}
-Healy K, 2016, The Plain Person's Guide to Plain Text Social Science.
-Healy2016
+Editorial, 2016. Reality check on reproducibility. \emph{Nature}, 533
+(7604), 437--437.
 
 \hypertarget{ref-Healy2011}{}
-Healy K, 2011, Choosing Your Workflow Applications. \emph{The Political
-Methodologist}. 18(2):9--18.
+Healy, K., 2011. Choosing Your Workflow Applications. \emph{The
+Political Methodologist}, 18 (2), 9--18.
+
+\hypertarget{ref-Healy2016}{}
+Healy, K., 2016. \emph{The Plain Person's Guide to Plain Text Social
+Science}. Healy2016.
 
 \hypertarget{ref-Leveque2012}{}
-LeVeque RJ, Mitchell IM, Stodden V, 2012, Reproducible research for
-scientific computing: Tools and strategies for changing the culture.
-\emph{Computing in Science \& Engineering}. 14(4):13--17.
+LeVeque, R.J., Mitchell, I.M., and Stodden, V., 2012. Reproducible
+research for scientific computing: Tools and strategies for changing the
+culture. \emph{Computing in Science \& Engineering}, 14 (4), 13--17.
+
+\hypertarget{ref-Mayring2010}{}
+Mayring, P. and Fenzl, T., 2014. Qualitative inhaltsanalyse, 601--613.
 
 \hypertarget{ref-Nuest2011}{}
-Nüst D, Stasch C, Pebesma E, 2011, Connecting R to the sensor Web. In:
-Lecture notes in geoinformation and cartography. 227--246
+Nüst, D., Stasch, C., and Pebesma, E., 2011. Connecting R to the sensor
+Web. \emph{In}: \emph{Lecture notes in geoinformation and cartography}.
+227--246.
 
 \hypertarget{ref-Pebesma2012}{}
-Pebesma E, Nüst D, Bivand R, 2012, The R software environment in
-reproducible geoscientific research. \emph{Eos, Transactions American
-Geophysical Union}. 93(16):163--163.
+Pebesma, E., Nüst, D., and Bivand, R., 2012. The R software environment
+in reproducible geoscientific research. \emph{Eos, Transactions American
+Geophysical Union}, 93 (16), 163--163.
 
 \hypertarget{ref-Vandewalle2012}{}
-Vandewalle P, 2012, Code Sharing Is Associated with Research Impact in
-Image Processing. \emph{Computing in Science \& Engineering}.
-14(4):42--47.
+Vandewalle, P., 2012. Code Sharing Is Associated with Research Impact in
+Image Processing. \emph{Computing in Science \& Engineering}, 14 (4),
+42--47.
 
 \end{document}
