@@ -8,17 +8,12 @@ bibliography: bibliography.bib
 output:
   pdf_document:
     keep_tex: yes
-  html_document: default
-  word_document:
-    fig_caption: yes
-    fig_width: 4
-    reference_docx: template.docx
 csl: taylor-and-francis-harvard-x.csl
 abstract: "This is the abstract of the template document used to show how to write
-  \npublications in R with R Markdown and the help of some packages.  Based on a \nconcrete
-  use case, this document exemplifies some of the caveats that may occur\nwhen writing
-  such a document and publishing it online on a Git repository. It also\npresents typical
-  use cases in Markdown usage and presents some tricks.\n     \n"
+  publications in R with R Markdown and the help of some packages.  Based on a concrete
+  use case, this document exemplifies some of the caveats that may occur when writing
+  such a document and publishing it online on a Git repository. It also presents typical
+  use cases in Markdown usage and presents some tricks."
 ---
 
 ```{r setup,comment=FALSE, message = FALSE, echo=FALSE,warning=FALSE}
@@ -27,7 +22,7 @@ options(scipen=6)       # display digits proberly!! not the scientific version
 options(digits.secs=6)  # use milliseconds in Date/Time data types
 options(warning=FALSE)  # don't show warnings
 library(knitr)          # set global knitr options of the document
-# Here we set the figure path to be in the figure folder and we also set the R code invisible to not show when the document is rendered
+# Here we set the R code invisible to not show when the document is rendered
 opts_chunk$set(comment="", message = FALSE, echo=FALSE, error=FALSE, warning=FALSE)
 ```
 
@@ -36,7 +31,6 @@ dataFolder   <- file.path("data")   # Set path to the data and figure folder
 figureFolder <- file.path("figures")
 RFolder      <- file.path("R")      # Set the path to the RScript folder
 # Load the R libraries
-# install.packages(c("plyr","reshape2","ggmap","ggplot2","scales","rgdal","maptools","tools"),dependencies = TRUE)
 l<-lapply(list("plyr","reshape2","ggmap","ggplot2","scales","rgdal","maptools","tools"), require, character.only = TRUE)
 ```
 
@@ -131,8 +125,7 @@ The proposed Parc Adula national park candidate is situated in Switzerland in th
 # Create the map if the map images does not exist
 mapPng <- file.path(figureFolder,"map.png")
 if(!file.exists(mapPng)){
-  # the map generation code is stored in an external R script to increase the 
-  # readibility of this Rmd file
+  # the map generation code is stored in an external R script to increase the readibility of this Rmd file
   source(file.path(RFolder,"loadMapData.r"))
 }else{knitr::include_graphics(mapPng)}
 ```

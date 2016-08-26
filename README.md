@@ -251,9 +251,17 @@ We've prepared a report `publication.Rmd`based on some preliminary data from a s
 
 **3. Explore the publication.Rmd example:** Open the document at `publication.Rmd`. This document should illustrate how publications in R with R Markdown and the help of some packages can be written. It's based on a concrete research use case, and exemplifies some of the caveats and implications that may occur when writing a reproducible document and publishing it online on a Git repository. It also presents typical use cases in Markdown usage and presents some tricks. 
 
-Examine the Markdown used to generate TABLE / FIGURE / etc. Fill in as necessary. Feel free to play around with this file 
+Examine the Markdown used to generate references, lists and figures. Look at the different R chunks and how particular settings are handled at the beginning of the document. 
 
+**4. Render the publication.Rmd document** and feel free to play around with this file and see how the document changes.
 
+**Some notes on reproducibility**: (you'll find them also in the document)
+
+* Depending on the data to analyze, privacy may play a role. While for the analysis itself the data is being anonymised, storing the raw or preprocessed data on a public repository may pose privacy issues or even constitute a violation of contract.
+* Web APIs are subject to license restrictions, can get altered by the service provider, or can simply cease to exist, so consider them carefully before using them in a scientific project. Consider instead using software which you can store locally and can better control the parameters and settings. If collecting data from an API, ensure to note down as much as possible about the data collection: the date range, all the query parameters, including the service limits at the time, any interruptions in service, and so on. It's also wise to back up the data thus obtained, if at all possible!
+* Due to license restrictions of the open geodata, it is not possible to store the data on a public Git repository. The included script `R/loadMapData.r` downloads the data directly from the link provided in the geodata catalog infobox of http://maps.geo.admin.ch
+
+The generated files in _PDF_, _Word_ or _HTML_ often still need some fine-tuning afterwards (particularly in Latex). It is nevertheless a great way of documenting the research process, generating initial drafts, and sharing workflows with collaborators or a wider audience.
 
 ## Practical tips
 
