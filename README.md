@@ -23,9 +23,6 @@ Some reasons to create a reproducible report with R (and Markdown) are:
 * You can keep all relevant parts of your project together
 * **TODO** add more reasons
 
-[![RStudio what is R Markdown?](https://i.vimeocdn.com/video/586132078_640.jpg)](https://vimeo.com/178485416)
-
-
 
 ## Publication generation workflow in R
 
@@ -76,6 +73,8 @@ The following GitHub repository https://github.com/314a/rr-r-publication contain
 
 a) **Download .zip** file https://github.com/314a/rr-rstudio-git/archive/master.zip. Unzip the file in your R Workspace folder, where you store all your different R projects. Rename the _master_ folder to _rr-r-publication_. Within this folder open the _rr-r-publication.RProj_ file to open this RStudio project.  
 b) **Clone the repository**: If you have Git installed, go to _File > New Project..._ and create a new project from _Version Control_ and enter the following repository url: `https://github.com/314a/rr-r-publication.git`. RStudio then clones the repository into the R workspace folder you provided.
+
+Now open the RStudio project by opening the project file `rr-r-publication.Rproj`.
 
 ## Part 3: Generate a simple RMarkdown file
 
@@ -183,6 +182,18 @@ The _output_ argument allows to specify the output document and various options.
     date: "`r Sys.Date()`"
     output: word_document
     ---
+    
+**Advanced:** The different output format let you specify also various style options, such as .css style sheets for html or for word you can specify a template document. The following YAML metadata includes the _reference_docx_ which points to a template Word _docx_ file. The rendered output Word document will then include the Word styles defined in the reference template.docx. If you want to test use the header below in your R Markdown. The project folder includes a `template.docx` file to play around with.
+
+    ---
+    title: "RMarkdown Minimal Example"
+    author: "Your Name"
+    date: "`r Sys.Date()`"
+    output: 
+      word_document:
+        fig_caption: yes
+        reference_docx: template.docx
+    ---
 
 **4. Include references and citation styles:** In order to include citations, you can specify a bibliography file in the YAML metadata. A widely used format is the _.bib_ format. Most literature/reference management software ([Mendeley](https://www.mendeley.com), [Zotero](https://www.zotero.org) etc.) provide export functionalities to save references as .bib files of the whole library or of a selected list for a publication. The current project already includes a `bibliography.bib` and in adition a CSL 1.0 style file, so you are fine to go with the next steps. 
 
@@ -211,12 +222,13 @@ More about citations and references:
 
 Note: RStudio as of now provides a spell checker you can invoke manually with the key `F7`, but it does not provide an as-you-type spell checker.
 
-## Part 5: TODO 
+## Part 5: Explore a more complex report/publication 
 
+Generating a report in RMarkdown is relatively simple, as you've seen above. However, getting things just right for a more complex RMarkdown file can sometimes be a bit of work - remember usually spending more time getting things right at this stage will save you a lot of time down the line!
 
+We've prepared a report `publication.Rmd`based on some preliminary data from a study examining attitudes about a new Swiss national park. We will not modify this document in this tutorial, but instead examine it as it presents working examples of making analysis, resultinging figures and tables reproducible. This project you downloaded from GitHub is furthermore an example on how you can structure an R project.
 
-
-## Create and structure an R project 
+**1. Project structure**: By looking at the project structure think on how you might want to structure a project and consider the following aspects:
 
 * **Folder structure:**: What structure might be useful?
 * **Data organisation:**: How do you organise your (raw/derived) data? 
@@ -226,16 +238,22 @@ Note: RStudio as of now provides a spell checker you can invoke manually with th
 * **Reusability:**: Which functionalities will you reuse?
 * **Extendable:**: What if the project becomes larger?
 
-**Example folder structure:**   
+**2. Example folder structure:** It's helpful to keep a consice order, the longer you work with R the more you'll have a way on how you organise your project files and folders. For instance in this project we have:
 
 * **R**: R folder storing all the *.r* code files
 * **data**: Data folder with the raw and the derived data (e.g. data.csv, data.RData)
 * **figures**: Figure folder (e.g. pictures, logo etc.)
-* *myproject.RProj*: RStudio project file
-* *ProjectReport.Rmd*: RMarkdown storing the report text and R analysis code
-* *ProjectReport.pdf*: Generated report from the RMarkdown file
+* *rr-r-publication.RProj*: RStudio project file 
+* *pubcliaton.Rmd*: RMarkdown storing the report text and R analysis code
+* *publicaton.pdf*: Generated report from the RMarkdown file
+* *publicaton.tex*: Generated .tex from the RMarkdown file, which you can use in your Latex environment or for instance [overleaf](https://www.overleaf.com).
 * *README.md*: Information about the project. *(good practice)*
-    
+
+**3. Explore the publication.Rmd example:** Open the document at `publication.Rmd`. This document should illustrate how publications in R with R Markdown and the help of some packages can be written. It's based on a concrete research use case, and exemplifies some of the caveats and implications that may occur when writing a reproducible document and publishing it online on a Git repository. It also presents typical use cases in Markdown usage and presents some tricks. 
+
+Examine the Markdown used to generate TABLE / FIGURE / etc. Fill in as necessary. Feel free to play around with this file 
+
+
 
 ## Practical tips
 
@@ -248,7 +266,7 @@ Note: RStudio as of now provides a spell checker you can invoke manually with th
 
 ## Useful links
 
-- [RSTudio RMarkdown Tutorial](http://rmarkdown.rstudio.com/)
+- [RSTudio RMarkdown Tutorial](http://rmarkdown.rstudio.com/) Short introductory video: [RStudio what is R Markdown?](https://vimeo.com/178485416)
 - [RMarkdown cheatsheet](http://shiny.rstudio.com/articles/rm-cheatsheet.html) https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf
 - [RMarkdown 2 cheatsheet](http://www.utstat.toronto.edu/reid/sta2201s/rmarkdown-reference.pdf)
 
