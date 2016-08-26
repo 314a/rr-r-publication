@@ -23,6 +23,10 @@ Some reasons to create a reproducible report with R (and Markdown) are:
 * You can keep all relevant parts of your project together
 * **TODO** add more reasons
 
+[![RStudio what is R Markdown?](https://i.vimeocdn.com/video/586132078_640.jpg)](https://vimeo.com/178485416)
+
+
+
 ## Publication generation workflow in R
 
 R with the help of some tools mainly knitr and behind the scenes Pandoc enables you to automatically generate reports in various formats (HTML, PDF and Word) from your analysis.
@@ -77,7 +81,7 @@ b) **Clone the repository**: If you have Git installed, go to _File > New Projec
 
 ## Part 3: Generate a simple RMarkdown file
 
-A RMarkown file consists of **Markdown** text, **R Code chunks** and a optional **YAML header**.
+A RMarkown file is a text file that contains three types of content: a **Markdown** text to describe, **R Code chunks** to run code and a **YAML Metdata** guide how to build the final document.
 
 * The **YAML header** block on top of the file serves to include some metadata about the RMarkdown document, such as who is the author of the document or should it be rendered into a HTML, PDF or a word document. A YAML block is on the top of the page and delimited with `---`.
 * The **R code chunks** are where you can add your R code and start with ` ```{r} ` on a new line and end with ` ``` ` on a new line. 
@@ -89,14 +93,14 @@ The following minimal RMarkdown example contains all three RMarkdown parts, a YA
 
     ---
     title: "RMarkdown Minimal Example"
-    author: "John Snow"
+    author: "Yihui Xie"
     date: "19 August 2016"
     output: html_document
     ---
     
     ## Markdown 
     
-    This is a **RMarkdown** document. You can write text in **bold** or _cursive_, include [links](http://geo.uzh.ch) or add inline formulae $y=x+3$
+    This is a **RMarkdown** document. You can write text in **bold** or _cursive_, include [links](http://geo.uzh.ch) or add inline formulae $y=x+3$ (following Latex formulae markup)
     
     ## Markdown with R code
     
@@ -120,9 +124,11 @@ The following minimal RMarkdown example contains all three RMarkdown parts, a YA
 
 ![RSTudio knit menu](img/RStudio-knit.png)
 
+
+
 ## Part 4: Edit a simple RMarkdown file
 
-**1.  Edit Markdown elements**: Now lets edit the RMarkdown file. Include the following snippet with new Markdown elements -- a list, a table and an image -- below the first paragraph (Line 10) of your document and knit the document again.
+**1.  Edit Markdown elements**: Now lets edit the RMarkdown file. Include the following snippet with new Markdown elements -- a list, a table and an image -- below the first paragraph (Line 10) of your document and knit the document again. 
 
     **List:**
     
@@ -130,7 +136,7 @@ The following minimal RMarkdown example contains all three RMarkdown parts, a YA
     2. make it an unordered list 
     3. replace the numbers with `*`  
     
-    **Table:**
+    **Table:** 
     
     Name          | Value
     --------------| ------------------
@@ -143,7 +149,7 @@ The following minimal RMarkdown example contains all three RMarkdown parts, a YA
     
     ![Reproducible Research Logo](figures/logo.png)
     
-**2. Edit R code chunks:** R chunks are evluated in order as they appear in the document. It is good practice to give each code chunk a name like `chunk_name` in the second r code chunk in our file. Let's rename the first code chunk to `{r simulate_data}` and the second to `{r scatterplot}`. 
+**2. Edit R code chunks:** R chunks are evluated in order as they appear in the document. It is good practice to give each code chunk a name like `chunk_name` in the second r code chunk in our file. Let's rename the first code chunk to `{r simulate_data}` and the second to `{r scatterplot}`.
 
 R code chunks will print the R code and the output of that code chunk. _Chunk options_ allow to modify the behavior on how the code chunk 'behaves'. If no R code should be printed, then set the `echo = FALSE` option or if the figure size should overwrite the default size set `fig.width=4,fig.height=2`.
 
@@ -165,26 +171,52 @@ R code chunks will print the R code and the output of that code chunk. _Chunk op
     options(digits.secs=6)  # use milliseconds in Date/Time data types
     options(warning=FALSE)  # don't show warnings
     library(knitr)          # set global knitr options of the document
-    # Here we set the figure path to be in the figure folder and we also set the R code invisible to not show when the document is rendered
+    # Here we set the R code invisible to not show when the document is rendered
     opts_chunk$set(comment="", message = FALSE, echo=FALSE, error=FALSE, warning=FALSE)
     ```
 
-**3. Edit the YAML header:** Lets edit the header by adding our names and even mix in R code to automatically set the document date to today.
+**3. Edit the YAML metadata:** The YAML metadata lets you edit the various arguments how to render the output document. Change the author name from _Yihui Xie_ -- the creater of the knitr package -- and set to your name there. Now we want that the document displays the todays date. It is possible to include inline R expressions such as ``` `r Sys.Date()` ``` in the YAML header. So we replace `date: "19 August 2016"` with ```date: "`r Sys.Date()`" ```. 
+
+The _output_ argument allows to specify the the output document and various options. To render a _word document_ instead of a _html document_ we replace the output `output: html_document` with `output: word_document`. In RStudio you can specify some of the _output options_, you find this menu -- a cogwheel -- to the right of the knit button. By changing them you'll see that the YAML Metadata changes acordingly in the RMarkdown document. Type `?html_document` or `?word_document` in the R console to find more information on the available metadata arguments or consult the online documentation [HTML Documents](http://rmarkdown.rstudio.com/html_document_format.html), [Word Documents](http://rmarkdown.rstudio.com/word_document_format.html).
 
     ---
     title: "RMarkdown Minimal Example"
-    author: "your name"
+    author: "Your Name"
     date: "`r Sys.Date()`"
-    output: html_document
+    output: word_document
     ---
-    
-- edit yaml 
+
+**4. Include references and citation styles:** In order to include citations, you can specify a bibliography file in the YAML header. A widely used format is the _.bib_ format. Most literature management software ([Mendeley](https://www.mendeley.com), [Zotero](https://www.zotero.org) etc.) provide export functionalities to save references as .bib files of the whole library or of a selected list for a publication. The current project already includes a `bibliography.bib` and in adition a CSL 1.0 style file, so you are fine to go with the next steps. 
+
+1. Specify the .bib file on a new line in the YAML metadata block `bibliography: bibliography.bib`. 
+2. Include some references in the markdown text blocks. Each citation starts with a '@' followed by a _citation key_ e.g. `@Brunsdon2015`. Enclose them with square brackets `[@Brunsdon2015]` or use a semicolon to specify more authors `[@Brunsdon2015;@Nature2016]`. For instance include `@Brunsdon2015 says ...` or `[@Brunsdon2015;@Nature2016]`.
+3. Citations are included after the last paragraph in the R Markdown document. So include on the last line of your document an appropriate header `# References`.
+4. To change the citation style, which by default is set to Chicago author-date format, you need to specify a _CSL 1.0_ file in the _csl_ metadata field. Add on a new line in the YAML metadata block the following `csl: taylor-and-francis-harvard-x.csl`.
+4. Render the document to see how the references are included.
+
+Your header now may looks like this:
+
+    ---
+    title: "RMarkdown Minimal Example"
+    author: "Your Name"
+    date: "`r Sys.Date()`"
+    output: word_document
+    bibliography: bibliography.bib
+    csl: taylor-and-francis-harvard-x.csl
+    ---
+
+More about citations and references: 
+
+* R Markdown documentation on [bibliographies and citations](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
+* Find and download different .csl styles: https://www.zotero.org/styles (you may also need some .csl style files for mendeley etc.) The link for the style file used in this tutorial is: [Example Tailor and Francis Harvard X](https://www.zotero.org/styles/taylor-and-francis-harvard-x)
+* [CSL style editor](http://editor.citationstyles.org), allows you to interactively edit the .csl style files, if your style file, doesn't exactly comply with the one requested from the journal or conference editors. Finding the name of a requested style remains often a bit of a guess work.
+
+Note: RStudio as of now provides a spell checker you can invoke manually with the key `F7`, but it does not provide an as-you-type spell checker.
+
+## Part 5: TODO 
 
 
-## Citation and References
 
-https://www.zotero.org/styles
-http://editor.citationstyles.org/
 
 ## Create and structure an R project 
 
@@ -218,6 +250,7 @@ http://editor.citationstyles.org/
 
 ## Useful links
 
+- [RSTudio RMarkdown Tutorial](http://rmarkdown.rstudio.com/)
 - [RMarkdown cheatsheet](http://shiny.rstudio.com/articles/rm-cheatsheet.html) https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf
 - [RMarkdown 2 cheatsheet](http://www.utstat.toronto.edu/reid/sta2201s/rmarkdown-reference.pdf)
 
