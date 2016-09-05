@@ -125,7 +125,7 @@ The following minimal RMarkdown example contains all three RMarkdown parts, a YA
 
 ## Part 4: Edit a simple RMarkdown file
 
-**1.  Edit Markdown elements**: Now lets edit the RMarkdown file. Include the following snippet with new Markdown elements -- a list, a table and an image -- below the first paragraph (Line 10) of your document and knit the document again. 
+**1.  Edit Markdown elements**: Now let's edit the RMarkdown file. Include the following snippet with new Markdown elements -- a list, a table and an image -- below the first paragraph (Line 10) of your document and knit the document again. 
 
     **List:**
     
@@ -148,7 +148,7 @@ The following minimal RMarkdown example contains all three RMarkdown parts, a YA
     
 **2. Edit R code chunks:** R chunks are evaluated in the order that they appear in the document. It is good practice to give each code chunk a meaningful name. The name of the chunk in our file is currently `chunk_name`. Let's rename the first code chunk to `{r simulate_data}` and the second to `{r scatterplot}`.
 
-R code chunks will print the R code and the output of that code chunk. _Chunk options_ allows you to control a few things like whether to print the R code in the output. If no R code should be printed, then set the `echo = FALSE` option or if the figure size should overwrite the default size, set `fig.width=4,fig.height=2`.
+R code chunks will print the R code and the output of that code chunk. _Chunk options_ allows you to control a few things like whether to print the R code in the output. If no R code should be printed, then set the `echo = FALSE` option, or if the figure size should overwrite the default size, set `fig.width=4,fig.height=2`.
 
     ```{r simulate_data, echo=FALSE}
     d  <- data.frame(participants=1:10,height=rnorm(10,sd=30,mean=170)) 
@@ -160,7 +160,7 @@ R code chunks will print the R code and the output of that code chunk. _Chunk op
     plot(d)
     ```
     
-**Advanced:** You can set these options also globally with `opts_chunk$set` in the beginning of the RMarkown file. I often use the following code chunk in the beginning of each RMarkdown document (after the YAML metadata block).
+**Advanced:** You can also set these options globally with `opts_chunk$set` in the beginning of the RMarkown file. I often use the following code chunk in the beginning of each RMarkdown document (after the YAML metadata block).
 
     ```{r setup, comment=FALSE, message = FALSE, echo=FALSE, warning=FALSE}
     rm(list=ls())           # Clean the environment
@@ -174,7 +174,7 @@ R code chunks will print the R code and the output of that code chunk. _Chunk op
 
 **3. Edit the YAML metadata:** The YAML metadata lets you control a few things about how to render the output document. Change the author name from _Pie Bear_ to your own name (or your favorite alias!). Now we want the document to display today's date. It is possible to include inline R expressions such as ``` `r Sys.Date()` ``` in the YAML metadata. So let's replace `date: "19 August 2016"` with ```date: "`r Sys.Date()`" ```. 
 
-The _output_ argument allows to specify the output document and various options. To render a _word document_ instead of a _html document_ we replace the output `output: html_document` with `output: word_document`. In RStudio you can specify some of the _output options_, you find this menu -- a cogwheel -- to the right of the knit button. By changing them you'll see that the YAML metadata changes accordingly in the RMarkdown document. Type `?html_document` or `?word_document` in the R console to find more information on the available metadata arguments or consult the online documentation [HTML Documents](http://rmarkdown.rstudio.com/html_document_format.html), [Word Documents](http://rmarkdown.rstudio.com/word_document_format.html).
+The _output_ argument allows to specify the output document and various options. To render a _Word document_ instead of an _HTML document_ we replace the output `output: html_document` with `output: word_document`. In RStudio you can specify some of the _output options_, you find this menu -- a cogwheel -- to the right of the knit button. By changing them you'll see that the YAML metadata changes accordingly in the RMarkdown document. Type `?html_document` or `?word_document` in the R console to find more information on the available metadata arguments or consult the online documentation for [HTML Documents](http://rmarkdown.rstudio.com/html_document_format.html) and [Word Documents](http://rmarkdown.rstudio.com/word_document_format.html).
 
     ---
     title: "RMarkdown Minimal Example"
@@ -183,7 +183,7 @@ The _output_ argument allows to specify the output document and various options.
     output: word_document
     ---
     
-**Advanced:** The different output format let you specify also various style options, such as .css style sheets for html or for word you can specify a template document. The following YAML metadata includes the _reference_docx_ which points to a template Word _docx_ file. The rendered output Word document will then include the Word styles defined in the reference template.docx. If you want to test use the header below in your R Markdown. The project folder includes a `template.docx` file to play around with.
+**Advanced:** The different output formats let you also specify various style options, such as .css stylesheets for HTML, or a template document for Word. The following YAML metadata includes the _reference_docx_ which points to a template Word _docx_ file. The rendered output Word document will then include the Word styles defined in the reference template.docx. If you want to test use the header below in your R Markdown. The project folder includes a `template.docx` file to play around with.
 
     ---
     title: "RMarkdown Minimal Example"
@@ -195,7 +195,7 @@ The _output_ argument allows to specify the output document and various options.
         reference_docx: template.docx
     ---
 
-**4. Include references and citation styles:** In order to include citations, you can specify a bibliography file in the YAML metadata. A widely used format is the _.bib_ format. Most literature/reference management software ([Mendeley](https://www.mendeley.com), [Zotero](https://www.zotero.org) etc.) provide export functionalities to save references as .bib files of the whole library or of a selected list for a publication. The current project already includes a `bibliography.bib` and in adition a CSL 1.0 style file, so you are fine to go with the next steps. 
+**4. Include references and citation styles:** In order to include citations, you can specify a bibliography file in the YAML metadata. A widely used format is the _.bib_ format. Most literature/reference management software ([Mendeley](https://www.mendeley.com), [Zotero](https://www.zotero.org) etc.) provide export functionalities to save references as .bib files of the whole library or of a selected list for a publication. The current project already includes a `bibliography.bib` and in addition a CSL 1.0 style file, so you are fine to continue with the next steps. 
 
 1. Specify the .bib file on a new line in the YAML metadata block `bibliography: bibliography.bib`. 
 2. Include some references in the markdown text blocks. Each citation starts with a '@' followed by a _citation key_ e.g. `@Brunsdon2015`. Enclose them in square brackets `[@Brunsdon2015]` or use a semicolon to specify more authors `[@Brunsdon2015;@Nature2016]`. For instance include `@Brunsdon2015 says ...` or `[@Brunsdon2015;@Nature2016]`.
@@ -203,7 +203,7 @@ The _output_ argument allows to specify the output document and various options.
 4. To change the citation style, which by default is set to Chicago author-date format, you need to specify a _CSL 1.0_ file in the _csl_ metadata field. Add on a new line in the YAML metadata block the following `csl: taylor-and-francis-harvard-x.csl`.
 4. Render the document to see how the references are included.
 
-Your YAML header now may looks like this:
+Your YAML header now may look like this:
 
     ---
     title: "RMarkdown Minimal Example"
@@ -217,28 +217,28 @@ Your YAML header now may looks like this:
 More about citations and references: 
 
 * R Markdown documentation on [bibliographies and citations](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
-* Find and download different .csl styles: https://www.zotero.org/styles (you may also need some .csl style files for mendeley etc.) The link for the style file used in this tutorial is: [Example Tailor and Francis Harvard X](https://www.zotero.org/styles/taylor-and-francis-harvard-x)
-* [CSL style editor](http://editor.citationstyles.org), allows you to interactively edit the .csl style files, if your style file, doesn't exactly comply with the one requested from the journal or conference editors. Finding the name of a requested style remains often a bit of a guess work.
+* Find and download different .csl styles at https://www.zotero.org/styles (you may also need some .csl style files for Mendeley etc.). The style file used in this tutorial is here: [Example Tailor and Francis Harvard X](https://www.zotero.org/styles/taylor-and-francis-harvard-x)
+* The [CSL style editor](http://editor.citationstyles.org) allows you to interactively edit the .csl style files, if your style file doesn't exactly comply with the one requested from the journal or conference editors. Finding the name of a requested style often involves a bit of guess work.
 
-Note: RStudio as of now provides a spell checker you can invoke manually with the key `F7`, but it does not provide an as-you-type spell checker.
+**Note:** RStudio as of now provides a spell checker you can invoke manually with the key `F7`, but it does not provide an as-you-type spell checker.
 
 ## Part 5: Explore a more complex report/publication 
 
-Generating a report in RMarkdown is relatively simple, as you've seen above. However, getting things just right for a more complex RMarkdown file can sometimes be a bit of work - remember usually spending more time getting things right at this stage will save you a lot of time down the line!
+Generating a report in RMarkdown is relatively simple, as you've seen above. However, getting things just right for a more complex RMarkdown file can sometimes be a bit more work - remember usually spending more time getting things right at this stage will save you a lot of time down the line!
 
-We've prepared a report `publication.Rmd`based on some preliminary data from a study examining attitudes about a new Swiss national park. We will not modify this document in this tutorial, but instead examine it as it presents working examples of making analysis, resultinging figures and tables reproducible. This project you downloaded from GitHub is furthermore an example on how you can structure an R project.
+We've prepared a report `publication.Rmd` based on some preliminary data from a study examining attitudes about a new Swiss national park. We will not modify this document in this tutorial, but instead examine it as it presents working examples of making analysis, figures and tables reproducible. This project you downloaded from GitHub is furthermore an example of how you can structure an R project.
 
-**1. Project structure**: By looking at the project structure think on how you might want to structure a project and consider the following aspects:
+**1. Project structure**: By looking at the project structure, think of how you might want to structure a project and consider the following aspects:
 
-* **Folder structure:**: What structure might be useful?
-* **Data organisation:**: How do you organise your (raw/derived) data? 
-* **Documentation:**: What do you document? Will you be reusing the data? Difficult parts, will you remember how you did it?
-* **Scope:**: What's the scope of the project?
-* **Report:**: Report structure
-* **Reusability:**: Which functionalities will you reuse?
-* **Extendable:**: What if the project becomes larger?
+* **Folder structure:** What structure might be useful?
+* **Data organisation:** How do you organise your (raw/derived) data? 
+* **Documentation:** What do you document? Will you be reusing the data? Difficult parts, will you remember how you did them?
+* **Scope:** What's the scope of the project?
+* **Report:** Report structure
+* **Reusability:** Which functionalities will you reuse?
+* **Extendable:** What if the project becomes larger?
 
-**2. Example folder structure:** It's helpful to keep a consice order, the longer you work with R the more you'll have a way on how you organise your project files and folders. For instance in this project we have:
+**2. Example folder structure:** It's helpful to keep your files tidy and to adhere to a certain structure across your projects. The longer you work with R the more you'll have a set way to organise your project files and folders. For instance in this project we have:
 
 * **R**: R folder storing all the *.r* code files
 * **data**: Data folder with the raw and the derived data (e.g. data.csv, data.RData)
@@ -249,7 +249,7 @@ We've prepared a report `publication.Rmd`based on some preliminary data from a s
 * *publicaton.tex*: Generated .tex from the RMarkdown file, which you can use in your Latex environment or for instance [overleaf](https://www.overleaf.com).
 * *README.md*: Information about the project. *(good practice)*
 
-**3. Explore the publication.Rmd example:** Open the document at `publication.Rmd`. This document should illustrate how publications in R with R Markdown and the help of some packages can be written. It's based on a concrete research use case, and exemplifies some of the caveats and implications that may occur when writing a reproducible document and publishing it online on a Git repository. It also presents typical use cases in Markdown usage and presents some tricks. 
+**3. Explore the publication.Rmd example:** Open the document at `publication.Rmd`. This document should illustrate how publications in R with R Markdown can be written, with the help or some packages. It's based on a concrete research use case, and exemplifies some of the caveats and implications that may occur when writing a reproducible document and publishing it online on a Git repository. It also presents typical use cases in Markdown usage and presents some tricks. 
 
 Examine the Markdown used to generate references, lists and figures. Look at the different R chunks and how particular settings are handled at the beginning of the document. 
 
@@ -266,16 +266,22 @@ The generated files in _PDF_, _Word_ or _HTML_ often still need some fine-tuning
 ## Practical tips
 
 1. Create an RStudio project for every project in a separate folder 
-2. Document everything, your documents should be understandable by someone other than you
+2. Document everything, your documents should be understandable by someone other than you (but you is a good start!)
 3. Plan your project, organise and store your data, code and reports
 4. Start small, with a subset of your data
-5. Link your workflow (e.g. data files as an input to your analysis files)
-6. Structure your project into the following steps: 1. Data collection; 2. Preprocessing; 3. Analysis; 4. Presentation 
+5. Link or chain your workflows, for example using the output of one step as the input to the next step
+6. Structure your project into the following steps:
+  1. Data collection (raw data)
+  2. Preprocessing (raw data to processed data)
+  3. Analysis (processed data to results)
+  4. Presentation (results presentation)
 
 ## Useful links
 
-- [RSTudio RMarkdown Tutorial](http://rmarkdown.rstudio.com/) Short introductory video: [RStudio what is R Markdown?](https://vimeo.com/178485416)
-- [RMarkdown cheatsheet](http://shiny.rstudio.com/articles/rm-cheatsheet.html) https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf
-- [RMarkdown 2 cheatsheet](http://www.utstat.toronto.edu/reid/sta2201s/rmarkdown-reference.pdf)
+- [RSTudio RMarkdown Tutorial](http://rmarkdown.rstudio.com/): tutorial from RStudio
+- [RStudio what is R Markdown?](https://vimeo.com/178485416): short introductory video on R Markdown
+- [RMarkdown cheatsheet](http://shiny.rstudio.com/articles/rm-cheatsheet.html), or get the [pdf directly](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+- [RMarkdown 2 cheatsheet](http://www.utstat.toronto.edu/reid/sta2201s/rmarkdown-reference.pdf): another pdf cheat sheet to print out and use as a reference
+- [Markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet): Markdown cheatsheet on GitHub ('star' it while logged in to easily find it again from your GitHub homepage), not R specific
 
 
