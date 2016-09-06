@@ -1,6 +1,6 @@
 ![](img/header.png)
 
-# RR Workshop Tutorial: Writing publications with R (Work in progress!)
+# RR Workshop Tutorial: Writing publications with R
 
 This tutorial in the context of the **Reproducible Research Workshop** provides you with the first steps on how to write publications in R.
 
@@ -21,7 +21,6 @@ Some reasons to create a reproducible report with R (and Markdown) are:
 * It makes changing and updating your publications easier
 * You can easily change the output format from PDF (via Latex), Word and HTML
 * You can keep all relevant parts of your project together
-* **TODO** add more reasons
 
 
 ## Publication generation workflow in R
@@ -236,7 +235,7 @@ We've prepared a report `publication.Rmd` based on some preliminary data from a 
 * **Scope:** What's the scope of the project?
 * **Report:** Report structure
 * **Reusability:** Which functionalities will you reuse?
-* **Extendable:** What if the project becomes larger?
+* **Extendability:** What if the project becomes larger?
 
 **2. Example folder structure:** It's helpful to keep your files tidy and to adhere to a certain structure across your projects. The longer you work with R the more you'll have a set way to organise your project files and folders. For instance in this project we have:
 
@@ -244,9 +243,9 @@ We've prepared a report `publication.Rmd` based on some preliminary data from a 
 * **data**: Data folder with the raw and the derived data (e.g. data.csv, data.RData)
 * **figures**: Figure folder (e.g. pictures, logo etc.)
 * *rr-r-publication.RProj*: RStudio project file 
-* *pubcliaton.Rmd*: RMarkdown storing the report text and R analysis code
-* *publicaton.pdf*: Generated report from the RMarkdown file
-* *publicaton.tex*: Generated .tex from the RMarkdown file, which you can use in your Latex environment or for instance [overleaf](https://www.overleaf.com).
+* *publication.Rmd*: RMarkdown storing the report text and R analysis code
+* *publication.pdf*: Generated report from the RMarkdown file
+* *publication.tex*: Generated .tex from the RMarkdown file, which you can use in your Latex environment or for instance [overleaf](https://www.overleaf.com).
 * *README.md*: Information about the project. *(good practice)*
 
 **3. Explore the publication.Rmd example:** Open the document at `publication.Rmd`. This document should illustrate how publications in R with R Markdown can be written, with the help or some packages. It's based on a concrete research use case, and exemplifies some of the caveats and implications that may occur when writing a reproducible document and publishing it online on a Git repository. It also presents typical use cases in Markdown usage and presents some tricks. 
