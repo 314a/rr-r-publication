@@ -1,4 +1,4 @@
-![](img/header.png)
+![](figures/header.png)
 
 # RR Workshop Tutorial: Writing publications with R
 
@@ -45,7 +45,7 @@ The workflow to create such a document with R is:
 
 In RStudio the **knit button** combines steps 3+4 behind the scene to compile the documents from the RMarkdown file.
 
-![RMarkdown workflow](img/processRStudio.png)
+![RMarkdown workflow](figures/RStudioKnitWorkflow.png)
 
 ## Part 1: Installation & Setup
 
@@ -114,11 +114,11 @@ The following minimal RMarkdown example contains all three RMarkdown parts, a YA
 
 **1. Create a new RMarkdown document**: In RStudio go to _File > New File > RMarkdown..._. In the menu keep the default output format as _HTML_ and press OK. RStudio opens an example RMarkdown document so you can quickly get started. Copy the content of the above **RMarkdown minimal example**, replacing all the default content from RStudio.
 
-![R Markdown File](img/RMarkdownNewFile.png)
+![R Markdown File](figures/RStudioNewRMarkdown.png)
 
 **2. Generate the HTML document**: Rather _knit_ the document. First save the RMarkdown file as _publication_minimal.Rmd_ in your R working directory. On top of the RMarkdown document press the _knit HTML_ button. Depending on the settings in the YAML metadata it should be set to HTML. After some seconds the created HTML document will open in a separate window in RStudio.
 
-![RSTudio knit menu](img/RStudio-knit.png)
+![RSTudio knit menu](figures/RStudioKnitButton.png)
 
 
 
