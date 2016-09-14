@@ -1,4 +1,4 @@
-![](figures/header.png)
+![](figures/readmeHeader.png)
 
 # RR Workshop Tutorial: Writing publications with R
 
