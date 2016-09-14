@@ -65,7 +65,7 @@ With Miktex installed the generation of PDF files via Latex should run just fine
 
 **Note:** On windows check the PATH variables in R console with `Sys.getenv("PATH")` (If you want to set a PATH variable for one session only, you can use the following command `Sys.setenv(PATH = paste(Sys.getenv("PATH"), "C:\\YOURPATH\\MikTeX\\miktex\\bin", sep=.Platform$path.sep))`)
 
-**3. Install the knitr package:** Type the following in the R console `install.packages("knit")` and hit enter to install this package. 
+**3. Install the knitr package:** Type the following in the R console `install.packages("knitr")` and hit enter to install this package. 
 
 ## Part 2: Download the GitHub repository with the tutorial project
 
