@@ -1,5 +1,5 @@
 ![](figures/header.png)
-This changed by Riad
+
 # RR Workshop Tutorial: Writing publications with R
 
 This tutorial in the context of the **Reproducible Research Workshop** provides you with the first steps on how to write publications in R.
