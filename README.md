@@ -70,7 +70,7 @@ With Miktex installed the generation of PDF files via Latex should run just fine
 
 The following GitHub repository https://github.com/314a/rr-r-publication contains the example files used in this tutorial. You can either download the repository (.zip file) or clone the project as a new R Project.
 
-a) **Download .zip** file https://github.com/314a/rr-rstudio-git/archive/master.zip. Unzip the file in your R Workspace folder, where you store all your different R projects. Rename the _master_ folder to _rr-r-publication_. Within this folder open the _rr-r-publication.RProj_ file to open this RStudio project.  
+a) **Download .zip** file https://github.com/314a/rr-r-publication/archive/master.zip. Unzip the file in your R Workspace folder, where you store all your different R projects. Rename the _master_ folder to _rr-r-publication_. Within this folder open the _rr-r-publication.RProj_ file to open this RStudio project.  
 b) **Clone the repository**: If you have Git installed, go to _File > New Project..._ and create a new project from _Version Control_ and enter the following repository url: `https://github.com/314a/rr-r-publication.git`. RStudio then clones the repository into the R workspace folder you provided.
 
 Now open the RStudio project by opening the project file `rr-r-publication.Rproj`.
