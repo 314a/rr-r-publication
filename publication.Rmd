@@ -6,14 +6,16 @@ author:
 - name@geo.uzh.ch
 bibliography: bibliography.bib
 output:
+  html_document:
+    df_print: paged
   pdf_document:
     keep_tex: yes
-csl: taylor-and-francis-harvard-x.csl
-abstract: "This is the abstract of the template document used to show how to write
+csl: "taylor-and-francis-harvard-x.csl"
+abstract: This is the abstract of the template document used to show how to write
   publications in R with R Markdown and the help of some packages.  Based on a concrete
   use case, this document exemplifies some of the caveats that may occur when writing
   such a document and publishing it online on a Git repository. It also presents typical
-  use cases in Markdown usage and presents some tricks."
+  use cases in Markdown usage and presents some tricks.
 ---
 
 ```{r setup,comment=FALSE, message = FALSE, echo=FALSE,warning=FALSE}
@@ -31,7 +33,7 @@ dataFolder   <- file.path("data")   # Set path to the data and figure folder
 figureFolder <- file.path("figures")
 RFolder      <- file.path("R")      # Set the path to the RScript folder
 # Load the R libraries
-l<-lapply(list("plyr","reshape2","ggmap","ggplot2","scales","rgdal","maptools","tools"), require, character.only = TRUE)
+l<-lapply(list("plyr","reshape2","ggmap","ggplot2","scales","rgdal","tools"), require, character.only = TRUE)
 ```
 
 ## Introduction 
