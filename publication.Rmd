@@ -107,7 +107,7 @@ Overview of the Google trend evolution of the search query: _Parc Adula_ ([url](
 
 
 ```{r googleTrend,fig.height=2,fig.width=5,fig.cap="Timeline of queries for Parc Adula set in the Google search engine"}
-ggplot( d, aes(Month, Count)) + geom_line() +labs(list(x = "", y = "Monthly Queries", title ="Google Trend queries for 'Parc Adula'"))+theme_bw()
+ggplot( d, aes(Month, Count)) + geom_line() +labs(x = "", y = "Monthly Queries", title ="Google Trend queries for 'Parc Adula'")+theme_bw()
 ```
 
 
